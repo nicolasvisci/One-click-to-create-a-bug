@@ -72,4 +72,12 @@ class Dashboard extends BaseController {
         $session->destroy();
         return redirect()->to('/login');
     }
+
+    public function prenota() {
+        $session = session();
+
+        echo view('templates/header_loggedIn');
+        echo view('pages/mappa');
+        echo view('templates/footer_loggedIn_users');
+    }
 }

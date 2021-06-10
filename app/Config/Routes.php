@@ -42,7 +42,9 @@ $routes->match(['get', 'post'], 'update', 'Profile::update');
 $routes->get('home', 'Dashboard::home');
 $routes->get('logout', 'Dashboard::logout');
 $routes->get('profile', 'Dashboard::profile');
-$routes->get('delete', 'Profile::delete');
+$routes->post('delete', 'Profile::delete');
+$routes->post('mostraLaboratori', 'Profile::delete');
+$routes->get('prenota', 'Dashboard::prenota');
 $routes->get('/', 'Pages::index');
 $routes->get('(:any)', 'Pages::view/$1');
 

@@ -172,11 +172,5 @@ button {
             <button type="submit" name="logout" class="material-icons" id="logout" formaction="logout"><a class="icons">logout</a></button>
         </form>
 
-
         </header>
-        <?= \Config\Services::validation()->listErrors() ?>
-        <script>
-            function confirm_function() {
-                confirm("Vuoi davvero eliminare il tuo profilo?");
-            }
-        </script>   
+        <?= \Config\Services::validation()->listErrors() ?> 

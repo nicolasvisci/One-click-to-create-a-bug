@@ -8,7 +8,7 @@
                 <p> <?php echo $_SESSION['email']?> </p>
             </form>
 
-            <form class="modify-form" action="update" method="post">
+            <form class="modify-form" method="post">
                 <h1> Modifica Profilo </h1>
                 <input type="text" class='agg_input' name="nome" placeholder="Nome">
                 <input type="text" class='agg_input' name="cognome" placeholder="Cognome">

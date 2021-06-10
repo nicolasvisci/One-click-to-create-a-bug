@@ -394,8 +394,4 @@ class Profile extends BaseController {
 
         return redirect()->to('/login');
     }
-
 }
-
-
-?>

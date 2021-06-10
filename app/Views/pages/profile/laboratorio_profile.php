@@ -6,7 +6,7 @@
                 <p> <?php echo $_SESSION['numero_telefono']?> </p>
             </form>
 
-            <form class="modify-form" action="update" method="post">
+            <form class="modify-form" method="post">
                 <h1> Modifica Profilo </h1>
                 <input type="text" class='agg_input' name="nome_LAB" placeholder="Nome Laboratorio">
                 <input type="text" class='agg_input' name="email" placeholder="Email">

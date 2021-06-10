@@ -110,15 +110,23 @@ input {
 .regLog_text:hover {
     color: #fff;
 }
+
+#info {
+    margin-left: 1100px;
+}
+
         </style>
     </head>
 
     <body>
         <header>
             <nav class="link">
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
                 <button class="btn"><a href="/signup_choice" class="btn_text">REGISTRATI</a></button>
                 <button class="btn"><a href="/login" class="btn_text">LOGIN</a></button>
                 <button class="btn"><a href="/" class="btn_text">HOME</a></button>
+                <button type="submit" name="info" class="material-icons" id="info" formaction="info"><a href="/info" class="icons">info</a></button>
+
             </nav>
         </header>
         <?= \Config\Services::validation()->listErrors() ?>
