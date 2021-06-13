@@ -1,6 +1,6 @@
         <main>
             <form class="profile-form">
-                <h1> Profilo </h1>
+                <h1 class="profile"> Profilo </h1>
                 <p> <?php echo $_SESSION['nome']?> </p>
                 <p> <?php echo $_SESSION['cognome']?> </p>
                 <p> <?php echo $_SESSION['data_nascita']?> </p>
@@ -9,7 +9,7 @@
             </form>
 
             <form class="modify-form" method="post">
-                <h1> Modifica Profilo </h1>
+                <h1 class="profile"> Modifica Profilo </h1>
                 <input type="text" class='agg_input' name="nome" placeholder="Nome">
                 <input type="text" class='agg_input' name="cognome" placeholder="Cognome">
                 <input type="date" class='agg_input' name="data_nascita">

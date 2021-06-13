@@ -35,6 +35,37 @@ class Dashboard extends BaseController {
         } 
     }
 
+    public function info() {
+        $session = session();
+
+        switch ($session->get('tipo_utente')) {
+
+            case "CI":
+                echo view('templates/header_loggedIn');
+                echo view('pages/info');
+                echo view('templates/footer_loggedIn_users');
+                break;
+
+            case "DA":
+                echo view('templates/header_loggedIn');
+                echo view('pages/info');
+                echo view('templates/footer_loggedIn_users');
+                break;
+
+            case "ME":
+                echo view('templates/header_loggedIn');
+                echo view('pages/info');
+                echo view('templates/footer_loggedIn_users');
+                break;
+
+            case "LA":
+                echo view('templates/header_loggedIn');
+                echo view('pages/info');
+                echo view('templates/footer_loggedIn_LAB');
+                break;
+        }
+    }
+
     public function profile() {
         $session = session();
 

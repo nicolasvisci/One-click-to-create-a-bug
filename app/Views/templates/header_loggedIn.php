@@ -42,11 +42,46 @@ p {
     text-align: center;
 }
 
-h1 {
+h1.profile {
     border: 5px solid;
     color: #fff;
     text-align: center;
     padding-bottom: 100px;
+}
+
+h1.home { 
+    color: #000; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 60px; 
+    font-weight: bold; 
+    line-height: 1;
+    text-align: center;
+    text-shadow: 0 0 5px #fff, 0 0 5px #fff;
+}    
+
+h2.home { 
+    color: #000;
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 40px; 
+    font-weight: bold;
+    line-height: 1;
+    text-align: center; 
+    text-shadow: 0 0 5px #fff, 0 0 5px #fff;
+}
+
+span {
+    transition: background-size .5s, background-position .3s ease-in .5s;
+    background-image: linear-gradient(#ff0000, #ff2200, #ff4400, #ff6600, #ff8800, #ffaa00, #ffcc00, #ffff00);
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+    background-size: 100% 0px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+span:hover {
+    transition: background-position .5s, background-size .3s ease-in .5s;
+    background-size: 100% 100%;
+    background-position: 0% 0%;
 }
 
 .modify-form {
@@ -133,8 +168,12 @@ button {
     margin-left: 35px;
 }
 
+#info {
+    margin-left: 50px;
+}
+
 #notifiche {
-    margin-left: 900px;
+    margin-left: 850px;
 }
 
 #profile {
@@ -167,6 +206,7 @@ button {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <form>
             <button type="submit" name="home" class="material-icons" id="home" formaction="home"><a class="icons">home</a></button>
+            <button type="submit" name="info" class="material-icons" id="info" formaction="info"><a class="icons">info</a></button>
             <button type="submit" name="notifiche" class="material-icons" id="notifiche" formaction="notifiche"><a class="icons">notifications_none</a></button>
             <button type="submit" name="person" class="material-icons" id="profile" formaction="profile"><a class="icons">person</a></button>
             <button type="submit" name="logout" class="material-icons" id="logout" formaction="logout"><a class="icons">logout</a></button>
