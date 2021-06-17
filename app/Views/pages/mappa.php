@@ -1,5 +1,4 @@
-         <form id="ServiceRequest" >
-
+<form id="ServiceRequest" >
             <div class="form-group">
                 <label class="control-label">Laboratorio:</label>
                 <select name="Laboratorio" class="form-control" id="LaboratorioEmail">
@@ -8,7 +7,6 @@
                     <option value="2">Service Two</option>
                 </select>
             </div>
-
             <div class="form-group">
                 <label for="provider_counter" class="control-label">Laboratori più vicini :</label>
                 <div class="text-lg-center alert-danger"id="info"></div>
@@ -18,14 +16,11 @@
                 <input id="lng" type="hidden" value="" />
                 <button type="button" onclick="relatedLocationAjax()"><a style='color:white'>Mostra laboratori più vicini</a></button>
             </div>
-
             <div id='submit_button'>
                 <input class="btn btn-success" type="submit" name="submit" value="add comment"/>
             </div>
         </form>
-
 <script>
-
 var lat = document.getElementById("lat"); // this will select the input with id = lat 
 var lng = document.getElementById("lng"); // this will select the input with id = lng
 var email = document.getElementById("email"); // this will select the input with id = email 
@@ -44,9 +39,7 @@ function initialize() {
     // set the map to the div with id = map and set the mapOptions as defualt
     map = new google.maps.Map(document.getElementById('map'),
         mapOptions);
-
     var infoWindow = new google.maps.InfoWindow({map: map});
-
     // get current location with HTML5 geolocation API.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -57,7 +50,6 @@ function initialize() {
             lat.value  =  position.coords.latitude;
             lng.value  =  position.coords.longitude;
             email.nodeValue =  position.coords.longitude;
-
             // set the current posation to the map and create info window with (Here Is Your Location) sentense
             infoWindow.setPosition(pos);
             infoWindow.setContent('Here Is Your Location.');
@@ -65,7 +57,6 @@ function initialize() {
             map.setCenter(pos);
             // draw circle on the map with parameters
             drawCircle(mapOptions, map, pos, km);
-
         }, function() {
             // if user block the geolocatoon API and denied detect his location
             handleLocationError(true, infoWindow, map.getCenter());
@@ -74,7 +65,6 @@ function initialize() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
         
-
     }
 }
 // to handle user denied
@@ -84,7 +74,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         'Error: User Has Denied Location Detection.' :
         'Error: Your browser doesn\'t support geolocation.');
 }
-
 // to draw circle around 30 kilometers to current location
 function drawCircle(mapOptions, map, pos, km ) {
     var populationOptions = {
@@ -100,7 +89,6 @@ function drawCircle(mapOptions, map, pos, km ) {
     // Add the circle for this city to the map.
     this.circle = new google.maps.Circle(populationOptions);
 }
-
 // this function to get providers with ajax request
 function relatedLocationAjax() {
     $.ajax({
@@ -115,7 +103,6 @@ function relatedLocationAjax() {
         }
     });
 }
-
 // this function to will draw markers with data returned from the ajax request
 function add_markers(data){
     var marker, i;
@@ -123,7 +110,6 @@ function add_markers(data){
     var infowindow = new google.maps.InfoWindow();
     // display how many closest providers avialable 
     document.getElementById('email').innerHTML = " Disponibili:" + data.length + " Laboratori<br>";
-
     for (i = 0; i < data.length; i++) {
         var coordStr = data[i][2];
         var coords = coordStr.split(",");
@@ -145,16 +131,13 @@ function add_markers(data){
             }
         })
         (marker, i));
-
     }
     // this is important part , because we tell the map to put all markers inside the circle,
     // so all results will display and centered
     map.fitBounds(this.circle.getBounds());
 }
-
 google.maps.event.addDomListener(window, 'load', initialize);
-
 </script>
 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1fakgY5-4CeED3cKi9VNnp3QbaR35EFA&callback=initialize">
+    src="https://maps.googleapis.com/maps/api/js?key=&callback=initialize">
 </script>
