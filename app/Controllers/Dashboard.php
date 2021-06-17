@@ -105,7 +105,6 @@ class Dashboard extends BaseController {
     }
 
     public function prenota() {
-        $session = session();
 
         echo view('templates/header_loggedIn');
         echo view('pages/mappa');

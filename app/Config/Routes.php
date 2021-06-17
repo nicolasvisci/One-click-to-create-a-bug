@@ -44,8 +44,8 @@ $routes->get('info', 'Dashboard::info');
 $routes->get('profile', 'Dashboard::profile');
 $routes->get('logout', 'Dashboard::logout');
 $routes->post('delete', 'Profile::delete');
-$routes->post('mostraLaboratori', 'Profile::delete');
 $routes->get('prenota', 'Dashboard::prenota');
+$routes->post('mostraLaboratori', 'Prenota::closest_locations');
 $routes->get('/', 'Pages::index');
 $routes->get('(:any)', 'Pages::view/$1');
 

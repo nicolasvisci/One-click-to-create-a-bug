@@ -15,7 +15,7 @@
                 <input type="date" class='agg_input' name="data_nascita">
                 <input type="text" class='agg_input' name="cod_fiscale" placeholder="Codice Fiscale">
                 <input type="text" class='agg_input' name="email" placeholder="Email">
-                <button type="submit" name="submit" class="del_btn" formaction="delete">ELIMINA PROFILO</button>
-                <button type="submit" name="submit" class="agg_btn" formaction="update">AGGIORNA PROFILO</button>
+                <button type="submit" name="del" class="del_btn" formaction="delete">ELIMINA PROFILO</button>
+                <button type="submit" name="agg" class="agg_btn" formaction="update">AGGIORNA PROFILO</button>
             </form>
         </main>

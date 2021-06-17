@@ -36,8 +36,8 @@ class Laboratori extends BaseController {
             ]);
 
             $model3->save([
-                'lat' => 41.107813 - mt_rand(0.1, 1) * 0.1,
-                'lng' => 16.866235 - mt_rand(-1, 1) * 0.1,
+                'lat' => 41.1122 - mt_rand(20, 100) * 0.001,
+                'lng' => 16.8547 - mt_rand(-100, 100) * 0.001,
                 'email' => strtolower($this->request->getVar('email'))
             ]);
     
