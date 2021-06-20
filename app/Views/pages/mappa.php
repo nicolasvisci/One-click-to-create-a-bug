@@ -1,143 +1,99 @@
-<form id="ServiceRequest" >
-            <div class="form-group">
-                <label class="control-label">Laboratorio:</label>
-                <select name="Laboratorio" class="form-control" id="LaboratorioEmail">
-                    <option>--all--</option>
-                    <option value="1" selected>Service One</option>
-                    <option value="2">Service Two</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="provider_counter" class="control-label">Laboratori più vicini :</label>
-                <div class="text-lg-center alert-danger"id="info"></div>
-                <div id="map" style="height: 600px; width:800px;"></div>
-                <input id="email" name="email" type="hidden" value="" />
-                <input id="lat" type="hidden" value="" />
-                <input id="lng" type="hidden" value="" />
-                <button type="button" onclick="relatedLocationAjax()"><a style='color:white'>Mostra laboratori più vicini</a></button>
-            </div>
-            <div id='submit_button'>
-                <input class="btn btn-success" type="submit" name="submit" value="add comment"/>
-            </div>
-        </form>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+
+    <div id="map" style="height: 600px; width:800px; margin-left: 345px;"></div>
+    <button id="click" name="click" type="submit" style="height:50px; width:100px; color:white; margin-left:700px;"> CLICK </button>
+
+
 <script>
-var lat = document.getElementById("lat"); // this will select the input with id = lat 
-var lng = document.getElementById("lng"); // this will select the input with id = lng
-var email = document.getElementById("email"); // this will select the input with id = email 
-var locations = [];
-var km = 100; // this kilometers used to specify circle wide when use drawcircle function
-var circle; // circle variable
-var map; // map variable
-var mapOptions = {
-    zoom: 11,
-    center: {lat:41.1122, lng:16.8547}
-}; // map options
-var markers = []; // markers array ,we will fill it dynamically
-var infoWindow = new google.maps.InfoWindow(); // information window ,we will use for our location and for markers
-// this will initiate when load the page and have all
-function initialize() {
-    // set the map to the div with id = map and set the mapOptions as defualt
-    map = new google.maps.Map(document.getElementById('map'),
-        mapOptions);
-    var infoWindow = new google.maps.InfoWindow({map: map});
-    // get current location with HTML5 geolocation API.
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-            lat.value  =  position.coords.latitude;
-            lng.value  =  position.coords.longitude;
-            email.nodeValue =  position.coords.longitude;
-            // set the current posation to the map and create info window with (Here Is Your Location) sentense
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Here Is Your Location.');
-            // set this info window in the center of the map 
-            map.setCenter(pos);
-            // draw circle on the map with parameters
-            drawCircle(mapOptions, map, pos, km);
-        }, function() {
-            // if user block the geolocatoon API and denied detect his location
-            handleLocationError(true, infoWindow, map.getCenter());
+
+    var lat;
+    var lng;
+    var lat_lng;
+
+    function loadMap (id) {
+        var default_pos = [41.1122, 16.8547];
+        var map = L.map(id, { zoomControl: false});
+        var tile_url = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+        var layer = L.tileLayer(tile_url, {
+            maxZoom: 10,
+		    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+			    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		    id: 'mapbox/streets-v11',
+		    tileSize: 512,
+		    zoomOffset: -1
         });
-    } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-        
-    }
-}
-// to handle user denied
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-        'Error: User Has Denied Location Detection.' :
-        'Error: Your browser doesn\'t support geolocation.');
-}
-// to draw circle around 30 kilometers to current location
-function drawCircle(mapOptions, map, pos, km ) {
-    var populationOptions = {
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FF0000',
-        fillOpacity: 0.35,
-        map: map,
-        center: pos,
-        radius: Math.sqrt(km*500) * 100
+        map.addLayer(layer);
+        map.setView(default_pos, 10);
+
+        map.locate({setView: true, watch: true}) /* This will return map so you can do chaining */
+            .on('locationfound', function(e){
+                lat = e.latitude;
+                lat = lat;
+                lac = lat;
+                lng = e.longitude;
+                lat_lng = {};
+                lat_lng.latitude = lat;
+                lat_lng.longitude = lng;
+                var marker = L.marker([lat, lng]).bindPopup('Your are here :)');
+                var circle = L.circle([lat, lng], {
+                    weight: 1,
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.15,
+                    radius: 30000
+                });
+
+                marker.addTo(map);
+                circle.addTo(map);
+            })
+            
+            .on('locationerror', function(e){
+                console.log(e);
+                alert("Location access denied.");
+            });
+
+            
     };
-    // Add the circle for this city to the map.
-    this.circle = new google.maps.Circle(populationOptions);
-}
-// this function to get providers with ajax request
-function relatedLocationAjax() {
-    $.ajax({
-        type: "POST",
-        url: 'Prenota/closest_locations',
-        dataType: "json",
-        cache: false,
-        data: {latitude: lat.value, longitude: lng.value, email: email.value},
-        success:function(data) {
-            // when request is successed add markers with results
-            add_markers(data);
-        }
-    });
-}
-// this function to will draw markers with data returned from the ajax request
-function add_markers(data){
-    var marker, i;
-    var bounds = new google.maps.LatLngBounds();
-    var infowindow = new google.maps.InfoWindow();
-    // display how many closest providers avialable 
-    document.getElementById('email').innerHTML = " Disponibili:" + data.length + " Laboratori<br>";
-    for (i = 0; i < data.length; i++) {
-        var coordStr = data[i][2];
-        var coords = coordStr.split(",");
-        var pt = new google.maps.LatLng(parseFloat(coords[0]), parseFloat(coords[1]));
-        bounds.extend(pt);
-        marker = new google.maps.Marker({
-            position: pt,
-            map: map,
-            icon: data[i][3],
-            address: data[i][1],
-            title: data[i][0],
-            html: data[i][0] + "<br>" + data[i][1]
-        });
-        markers.push(marker);
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                infowindow.setContent(marker.html);
-                infowindow.open(map, marker);
+    
+    
+    lat_lng = {latitude: lat, longitude: lng};
+    
+    
+
+    $("#click").click(function(){
+
+        $.ajax({
+            url:"/mostraLaboratori",
+            type: 'POST',
+            data: lat_lng,
+            dataType: "json",
+            success: function(res){
+                console.log(res);
             }
-        })
-        (marker, i));
-    }
-    // this is important part , because we tell the map to put all markers inside the circle,
-    // so all results will display and centered
-    map.fitBounds(this.circle.getBounds());
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=&callback=initialize">
+            
+        });
+
+        /*$.ajax({  
+            url:"<?php echo 'mostraLaboratori'; ?>",
+            type: 'GET',
+            dataType:'json',
+            success:function(data){
+                document.write(data);
+            }  
+        });*/
+    });
+
+    loadMap('map');
+    
+
 </script>

@@ -63,6 +63,11 @@ class Dashboard extends BaseController {
                 echo view('pages/info');
                 echo view('templates/footer_loggedIn_LAB');
                 break;
+                
+            default:
+                echo view('templates/header_loggedOut');
+                echo view('pages/info');
+                break;
         }
     }
 
