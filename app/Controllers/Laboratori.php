@@ -45,7 +45,7 @@ class Laboratori extends BaseController {
 
         } else {
             echo view('templates/header_loggedOut');
-            echo view('pages/signup_laboratorio');
+            echo view('pages/signup/signup_laboratorio');
         }
     }
     

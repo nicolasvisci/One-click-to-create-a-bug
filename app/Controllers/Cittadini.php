@@ -41,7 +41,7 @@ class Cittadini extends BaseController {
 
         } else {
             echo view('templates/header_loggedOut');
-            echo view('pages/signup_cittadino');
+            echo view('pages/signup/signup_cittadino');
         }
     }
 } 

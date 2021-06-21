@@ -39,6 +39,8 @@ $routes->match(['get', 'post'], 'signup_medico', 'Medici::create');
 $routes->match(['get', 'post'], 'signup_laboratorio', 'Laboratori::create');
 $routes->match(['get', 'post'], 'dashboard', 'Login::auth');
 $routes->match(['get', 'post'], 'update', 'Profile::update');
+$routes->get('signup', 'Dashboard::signup');
+$routes->get('login', 'Dashboard::login');
 $routes->get('home', 'Dashboard::home');
 $routes->get('info', 'Dashboard::info');
 $routes->get('profile', 'Dashboard::profile');
@@ -46,6 +48,8 @@ $routes->get('logout', 'Dashboard::logout');
 $routes->post('delete', 'Profile::delete');
 $routes->get('prenota', 'Dashboard::prenota');
 $routes->post('mostraLaboratori', 'Prenota::closest_locations');
+$routes->post('getData', 'Prenota::get_data');
+$routes->get('prenotazione', 'Prenota::prenotazione');
 $routes->get('/', 'Pages::index');
 $routes->get('(:any)', 'Pages::view/$1');
 

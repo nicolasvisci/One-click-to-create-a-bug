@@ -45,8 +45,7 @@ class Medici extends BaseController {
 
         } else {
             echo view('templates/header_loggedOut');
-            echo view('pages/signup_medico');
-
+            echo view('pages/signup/signup_medico');
         }
     }
     

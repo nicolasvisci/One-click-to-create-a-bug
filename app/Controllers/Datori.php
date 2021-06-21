@@ -45,7 +45,7 @@ class Datori extends BaseController {
 
         } else {
             echo view('templates/header_loggedOut');
-            echo view('pages/signup_datore');
+            echo view('pages/signup/signup_datore');
         }
     }
 } 

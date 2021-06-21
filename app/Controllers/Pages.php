@@ -6,7 +6,7 @@ class Pages extends BaseController {
 
 	public function index() {
 		echo view('templates/header_loggedOut');
-        echo view('pages/home');
+        echo view('pages/homepage/home');
 	}
 
     public function view($page = '') {
@@ -18,7 +18,7 @@ class Pages extends BaseController {
         $data['title'] = ucfirst($page); // Capitalize the first letter
 
         echo view('templates/header_loggedOut');
-        echo view('pages/' . $page);   
+        echo view('Views/pages/homepage/' . $page);   
     }
 
     

@@ -25,6 +25,7 @@ header {
     padding: 10px;
     position: relative;
     display: inline-block;
+    cursor: pointer;
 }
 
 .btn_text {
@@ -113,6 +114,7 @@ input {
 
 #info {
     margin-left: 1100px;
+    cursor: pointer;
 }
 
         </style>
@@ -120,13 +122,13 @@ input {
 
     <body>
         <header>
-            <nav class="link">
+            <form >
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-                <button class="btn"><a href="/signup_choice" class="btn_text">REGISTRATI</a></button>
-                <button class="btn"><a href="/login" class="btn_text">LOGIN</a></button>
-                <button class="btn"><a href="/" class="btn_text">HOME</a></button>
-                <button type="submit" name="info" class="material-icons" id="info" formaction="info"><a href="/info" class="icons">info</a></button>
+                <button class="btn" type="submit" name="registrati" formaction = "signup"><a class="btn_text">REGISTRATI</a></button>
+                <button class="btn" type="submit" name="login" formaction="login"><a class="btn_text">LOGIN</a></button>
+                <button class="btn" type="submit" name="home" formaction="home"><a class="btn_text">HOME</a></button>
+                <button class="material-icons" type="submit" name="info" id="info" formaction="info"><a class="icons">info</a></button>
 
-            </nav>
+            </form>
         </header>
         <?= \Config\Services::validation()->listErrors() ?>

@@ -32,6 +32,11 @@ class Dashboard extends BaseController {
                 echo view('pages/dashboard/laboratorio_dashboard');
                 echo view('templates/footer_loggedIn_LAB');
                 break;
+
+            default:
+                echo view('templates/header_loggedOut');
+                echo view('pages/homepage/home');
+                break;
         } 
     }
 
@@ -42,33 +47,43 @@ class Dashboard extends BaseController {
 
             case "CI":
                 echo view('templates/header_loggedIn');
-                echo view('pages/info');
+                echo view('pages/homepage/info');
                 echo view('templates/footer_loggedIn_users');
                 break;
 
             case "DA":
                 echo view('templates/header_loggedIn');
-                echo view('pages/info');
+                echo view('pages/homepage/info');
                 echo view('templates/footer_loggedIn_users');
                 break;
 
             case "ME":
                 echo view('templates/header_loggedIn');
-                echo view('pages/info');
+                echo view('pages/homepage/info');
                 echo view('templates/footer_loggedIn_users');
                 break;
 
             case "LA":
                 echo view('templates/header_loggedIn');
-                echo view('pages/info');
+                echo view('pages/homepage/info');
                 echo view('templates/footer_loggedIn_LAB');
                 break;
                 
             default:
                 echo view('templates/header_loggedOut');
-                echo view('pages/info');
+                echo view('pages/homepage/info');
                 break;
         }
+    }
+
+    public function signup() {
+        echo view('templates/header_loggedOut');
+        echo view('pages/homepage/signup_choice');
+    }
+
+    public function login() {
+        echo view('templates/header_loggedOut');
+        echo view('pages/homepage/login');
     }
 
     public function profile() {
@@ -112,7 +127,7 @@ class Dashboard extends BaseController {
     public function prenota() {
 
         echo view('templates/header_loggedIn');
-        echo view('pages/mappa');
+        echo view('pages/prenotazione/mappa');
         echo view('templates/footer_loggedIn_users');
     }
 }
