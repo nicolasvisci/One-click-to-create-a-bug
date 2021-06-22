@@ -96,15 +96,13 @@ span:hover {
 }
 
 input {
-    display: block;
-    margin: 4px 98px;
     border: 3px solid var(--clr-bg);
-    border-radius: 2px;
-    padding: .5em;
     font-size: 16px;
 }
 
 .agg_input {
+    padding: .5em;
+    border-radius: 2px;
     margin-top: 20px;
     margin-left: 70px;
 }
@@ -152,6 +150,66 @@ button {
     color: #fff
 }
 
+form.tamp-form {
+    background-color: #222;
+    padding: 40px 20px;
+    margin: 100px;
+    margin-left: 570px; 
+    width: 400px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.set_tamp {
+    padding: .5em;
+    border-radius: 2px;
+    margin-top: 20px;
+}
+
+div.tamp-form {
+    float: left;
+}
+
+div.input-form {
+    float: left;
+}
+
+form.dettagli-form {
+    background-color: #222;
+    padding: 40px 20px;
+    margin: 100px;
+    margin-left: 270px; 
+    width: 1000px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.agg_tamp {
+    background-color: green;
+    position: relative;
+    padding: 9px 0px;
+    width: 35%;
+    margin-left: 120px;
+    margin-top: 50px;
+    text-align: center;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff
+}
+
+p.output_form {
+    background-color: #fff;
+    margin: 20px 45px;
+    border: 3px solid var(--clr-bg);
+    border-radius: 2px;
+    padding: .5em;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    width: 27%;
+}
+
 .material-icons {
     color: white;
 }    
@@ -185,15 +243,19 @@ button {
 }
 
 #prenota {
-    margin-left: 420px;
+    margin-left: 435px;
 }
 
 #history {
     margin-left: 500px;
 }
 
+#modificaTamp {
+    margin-left: 435px;
+}
+
 #calendario {
-    margin-left: 700px;
+    margin-left: 500px;
 }
 
         </style>
