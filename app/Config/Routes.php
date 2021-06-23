@@ -51,6 +51,7 @@ $routes->post('mostraLaboratori', 'Prenota::closest_locations');
 $routes->post('getData', 'Prenota::get_data');
 $routes->get('prenotazione', 'Prenota::prenotazione');
 $routes->get('modificaTamp', 'Dashboard::modificaTamp');
+$routes->post('aggiungi_test', "Laboratori::aggiungi_test");
 $routes->get('/', 'Pages::index');
 $routes->get('(:any)', 'Pages::view/$1');
 

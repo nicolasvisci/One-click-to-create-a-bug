@@ -174,16 +174,6 @@ div.input-form {
     float: left;
 }
 
-form.dettagli-form {
-    background-color: #222;
-    padding: 40px 20px;
-    margin: 100px;
-    margin-left: 270px; 
-    width: 1000px;
-    border-radius: 10px;
-    position: relative;
-}
-
 .agg_tamp {
     background-color: green;
     position: relative;
@@ -198,16 +188,30 @@ form.dettagli-form {
     color: #fff
 }
 
-p.output_form {
-    background-color: #fff;
-    margin: 20px 45px;
-    border: 3px solid var(--clr-bg);
-    border-radius: 2px;
-    padding: .5em;
-    font-size: 16px;
-    text-align: center;
-    display: inline-block;
-    width: 27%;
+.dettagli-form {
+    background-color: #222;
+    padding: 30px 20px;
+    margin: 100px;
+    margin-left: 370px; 
+    width: 800px;
+    border-radius: 10px;
+}
+
+h1.titolo  {
+    display:inline;
+    color:white; 
+    font-weight:bold;
+}
+
+.row div{
+  float:left;
+  width: 170px;
+  height: 50px;
+  
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px;
+  background-color: #fff;
 }
 
 .material-icons {

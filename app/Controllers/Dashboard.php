@@ -132,7 +132,7 @@ class Dashboard extends BaseController {
     }
 
     public function modificaTamp() {
-        $session = session();
+        session();
         $db = \Config\Database::connect();
 
         echo view('templates/header_loggedIn');
