@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Models\webApp\LaboratoriModel;
 use App\Models\webApp\UtentiModel;
 use App\Models\webApp\PosizioneModel;
-use App\Models\webApp\TestModel;
 
 class Laboratori extends BaseController {
 
