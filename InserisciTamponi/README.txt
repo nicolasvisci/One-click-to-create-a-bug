@@ -1,0 +1,1 @@
+Se volete provare il mio codice per l'inserimento dei tamponi inserite semplicemente il codice negli appositi file (creando il nuovo file TamponiModel), eseguite la query per creare la tabella tamponi e inserite anche la route nel file routes.
