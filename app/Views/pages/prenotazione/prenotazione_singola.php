@@ -128,7 +128,7 @@ display: inline-block;
   <center>
   <br>
   <br>
-  <label for="standard-select" style=" font-size:30px"><span>Carica questionario anamnesi</span></label>
+  <label for="standard-select" style=" font-size:30px"><span>Carica questionario anamnesi:</span></label>
   <input type="file" id="myFile" name="filename" class="file" style="color:white">
   </center>
   <br>
