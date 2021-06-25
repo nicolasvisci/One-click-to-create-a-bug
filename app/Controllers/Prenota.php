@@ -29,6 +29,33 @@ class Prenota extends BaseController {
         return json_encode($info);
     }
 
+    function scegli_prenotazione()
+    {
+        $session = session();
+
+        switch ($session->get('tipo_utente')) {
+
+            case "CI":
+                echo view('templates/header_loggedIn');
+                echo view('pages/prenotazione/prenotazione_singola');
+                echo view('templates/footer_loggedIn_users');
+                break;
+
+            case "DA":
+                echo view('templates/header_loggedIn');
+                echo view('pages/prenotazione/scegli_prenotazione');
+                echo view('templates/footer_loggedIn_users');
+                break;
+
+            case "ME":
+                echo view('templates/header_loggedIn');
+                echo view('pages/prenotazione/scegli_prenotazione');
+                echo view('templates/footer_loggedIn_users');
+                break;
+        }
+
+    }
+
     function prenotazione() {
         $session = session();
 
