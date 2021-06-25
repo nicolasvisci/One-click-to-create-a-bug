@@ -8,11 +8,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 
     <div id="map" style="height: 600px; width:800px; margin-left: 345px;"></div>
     <button id="click" name="click" type="submit" style="height:50px; width:120px; color:white; margin-left:690px;"> MOSTRA LABORATORI </button>
-
 
 <script>
 
@@ -121,8 +119,5 @@
             marker.addTo(map);
         }
     }
-
     
-    
-
 </script>

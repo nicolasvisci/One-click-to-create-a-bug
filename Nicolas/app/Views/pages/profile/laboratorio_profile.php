@@ -1,7 +1,7 @@
         <main>
             <form class="profile-form">
                 <h1 class="profile"> Profilo </h1>
-                <p> <?php echo $_SESSION['nome_lab']?>
+                <p> <?php echo $_SESSION['nome_lab']?> </p>
                 <p> <?php echo $_SESSION['email']?> </p>
                 <p> <?php echo $_SESSION['numero_telefono']?> </p>
             </form>
