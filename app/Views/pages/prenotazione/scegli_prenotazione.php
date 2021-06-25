@@ -10,15 +10,6 @@
     margin-left: 330px;
 }
 
-h1 {
-    text-align:center;
-    margin-right: 0px;
-    border: 0px;
-    padding-bottom: 0px;
-    font-weight: bold;
-    font-size: 40px;
-}
-
 span {
   transition: background-size .5s, background-position .3s ease-in .5s;
 }
