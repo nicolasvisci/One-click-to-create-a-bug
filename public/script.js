@@ -5,13 +5,13 @@ $(document).ready(function() {
         events: site_url + "/event",
         displayEventTime: false,
         editable: true,
-        eventRender: function(event, element, view) {
+        eventRender: function(event) {
             if (event.allDay === 'true') {
                 event.allDay = true;
             } else {
                 event.allDay = false;
             }
-        },
+        }
         
 })
 

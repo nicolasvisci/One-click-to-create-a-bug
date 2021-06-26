@@ -14,7 +14,7 @@ class Prenota extends BaseController {
         ( 6371 * acos( cos( radians(" . $lat . ") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(" . $lng . ") ) + sin( radians(" . $lat . ") ) * sin( radians( lat ) ) ) ) AS distance,
         laboratori.email, numero_telefono
         FROM laboratori
-        JOIN posizione_lab  ON laboratori.email = posizione_lab.email
+        JOIN posizione_lab  ON laboratori.email = posizione_lab.email AND laboratori.email IN (SELECT email FROM tamponi)
         HAVING distance <= 30
         ORDER BY distance ASC;")->getResultArray();
 
@@ -22,10 +22,12 @@ class Prenota extends BaseController {
     }
 
     function get_data() {
+        session();
         $nome_lab = $_POST['nome_lab'];
         $email = $_POST['email'];
         $numero_telefono = $_POST['numero_telefono'];
         $info = array($nome_lab, $email, $numero_telefono);
+        $_SESSION['email_lab'] = $email;
         return json_encode($info);
     }
 

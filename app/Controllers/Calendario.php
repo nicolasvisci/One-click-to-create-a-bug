@@ -30,6 +30,7 @@ class Calendario extends BaseController
 		// on page load this ajax code block will be run
 		$data = $event->where([
 			'start >=' => $this->request->getVar('start')
+			
 		])->findAll();
 
 		return json_encode($data);
