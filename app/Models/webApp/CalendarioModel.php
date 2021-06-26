@@ -5,7 +5,7 @@ namespace App\Models\webApp;
 use CodeIgniter\Model;
 
 class CalendarioModel extends Model {
-	protected $table                = 'events';
+	protected $table                = 'prenotazioni';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
