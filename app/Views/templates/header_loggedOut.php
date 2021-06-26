@@ -121,7 +121,6 @@ input {
 #recuperaPassword {
     position: relative;
     top: 5px;
-
 }
 
         </style>

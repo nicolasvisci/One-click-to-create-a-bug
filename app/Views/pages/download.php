@@ -56,7 +56,6 @@ p {
   cursor: pointer;
   font-size: 20px;
   width: 15%;
-  margin-left: 650px;
   margin-top: 100px;
 }
 
@@ -85,7 +84,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <header class="w3-container w3-dark w3-center" style="padding:0px 16px">
   <h1><span class="w3-margin w3-jumbo Title">SCARICA IL QUESTIONARIO D'ANAMNESI</span></h1>
 </header>
-
+<center>
 <button class="btn" onclick="window.open('//www.aslal.it/allegati/SCHEDA%20ANAMNESTICA.pdf','_blank')" ><i class="fa fa-download"></i> DOWNLOAD</button>
+</center>
 </body>
 </html>
