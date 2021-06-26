@@ -12,10 +12,7 @@ $(document).ready(function() {
                 event.allDay = false;
             }
         },
-        selectable: true,
-        selectHelper: true,
         
-
 })
 
 })

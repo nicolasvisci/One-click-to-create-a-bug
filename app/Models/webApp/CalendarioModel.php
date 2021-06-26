@@ -14,7 +14,6 @@ class CalendarioModel extends Model {
 	protected $protectFields        = true;
 	protected $allowedFields        = [
 		'title',
-		'start',
-		'end'
+		'start'
 	];
 }

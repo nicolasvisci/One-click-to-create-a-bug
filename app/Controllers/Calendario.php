@@ -29,10 +29,10 @@ class Calendario extends BaseController
 		$event = new calendarioModel();
 		// on page load this ajax code block will be run
 		$data = $event->where([
-			'start >=' => $this->request->getVar('start'),
-			'end <='=> $this->request->getVar('end')
+			'start >=' => $this->request->getVar('start')
 		])->findAll();
 
 		return json_encode($data);
 	}
+
 }
