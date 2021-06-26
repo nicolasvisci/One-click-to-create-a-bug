@@ -112,6 +112,17 @@ input {
     color: #fff;
 }
 
+p {
+    background-color: #fff;
+    display: block;
+    margin: 20px 45px;
+    border: 3px solid var(--clr-bg);
+    border-radius: 2px;
+    padding: .5em;
+    font-size: 16px;
+    text-align: center;
+}
+
 #info {
     margin-left: 1100px;
     cursor: pointer;

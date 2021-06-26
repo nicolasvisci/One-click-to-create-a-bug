@@ -214,6 +214,16 @@ h1.titolo  {
   background-color: #fff;
 }
 
+form.book-form {
+    background-color: #222;
+    padding: 40px 20px;
+    margin: 100px;
+    margin-left: 370px; 
+    width: 800px;
+    border-radius: 10px;
+    position: relative;
+}
+
 .material-icons {
     color: white;
 }    
