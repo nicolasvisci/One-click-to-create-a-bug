@@ -118,6 +118,12 @@ input {
     color: black;
 }
 
+#recuperaPassword {
+    position: relative;
+    top: 5px;
+
+}
+
         </style>
     </head>
 
