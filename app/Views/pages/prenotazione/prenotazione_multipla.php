@@ -119,7 +119,7 @@ display: inline-block;
   </div>
   <div id="element2">
   <label for="standard-select" style=" font-size:30px"><span>Orario test:</span></label> 
-  <input name="hh_test" class="set_numb" type="number" min="0" max="23" placeholder="23"><a style="color:white">:</a><input name="mm_test" class="set_numb" type="number" min="0" max="59" placeholder="00">
+  <input name="hh_test" class="set_numb" type="number" min="0" max="23" placeholder="00"><a style="color:white">:</a><input name="mm_test" class="set_numb" type="number" min="0" max="59" placeholder="00">
   </div>
   <div id="element3">
   <label for="standard-select" style=" font-size:30px"><span>Tipo test:</span></label> 
@@ -135,7 +135,7 @@ display: inline-block;
   <br>
   <center>
   <label for="standard-select" style=" font-size:30px"><span>Numero persone:</span></label>
-  <input type="number"  class="set_numb" name="number_test">
+  <input type="number" min="1" max="20" class="set_numb" name="number_test">
   </center>
   <br>
   <br>
