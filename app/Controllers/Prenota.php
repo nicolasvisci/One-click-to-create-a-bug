@@ -14,7 +14,8 @@ class Prenota extends BaseController {
         ( 6371 * acos( cos( radians(" . $lat . ") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(" . $lng . ") ) + sin( radians(" . $lat . ") ) * sin( radians( lat ) ) ) ) AS distance,
         laboratori.email, numero_telefono
         FROM laboratori
-        JOIN posizione_lab  ON laboratori.email = posizione_lab.email AND laboratori.email IN (SELECT email FROM tamponi)
+        JOIN posizione_lab  ON laboratori.email = posizione_lab.email AND laboratori.email IN (SELECT email FROM tamponi 
+        WHERE tamp_1 != 0 OR tamp_2 != 0 OR tamp_3 != 0)
         HAVING distance <= 30
         ORDER BY distance ASC;")->getResultArray();
 
