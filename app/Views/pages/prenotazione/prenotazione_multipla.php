@@ -132,15 +132,12 @@ display: inline-block;
   </div>
   <br>
   <br>
+  <br>
   <center>
   <label for="standard-select" style=" font-size:30px"><span>Numero persone:</span></label>
   <input type="number"  class="set_numb" name="number_test">
   </center>
   <br>
-  <center>
-  <label for="standard-select" style=" font-size:30px"><span>Carica questionario anamnesi:</span></label>
-  <input type="file" id="myFile" name="filename" class="set_file" style="color:white">
-  </center>
   <br>
   <center><button type="submit" class="btn"><a class="regLog_text">PRENOTA TEST</a></button></center>
   
