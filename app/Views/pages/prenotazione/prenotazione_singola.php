@@ -102,7 +102,7 @@ display: inline-block;
   </style>
  </head>
  <body>
- <form class="tamp-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+ <form class="tamp-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
  <center>
  <label for="standard-select"><span>Quando si desidera prenotare il test:</span></label>
  </center>
@@ -129,11 +129,11 @@ display: inline-block;
   <br>
   <br>
   <label for="standard-select" style=" font-size:30px"><span>Carica questionario anamnesi:</span></label>
-  <input type="file" id="myFile" name="filename" class="file" style="color:white">
+  <input type="file" id="myFile" name="questionario" class="file" style="color:white">
   </center>
   <br>
   <br>
-  <center><button type="submit" class="btn"><a class="regLog_text">PRENOTA TEST</a></button></center>
+  <center><button type="submit" name="submit" class="btn" formaction="prenotaTest"><a class="regLog_text">PRENOTA TEST</a></button></center>
   
   </form>
 </body>

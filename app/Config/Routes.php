@@ -41,6 +41,7 @@ $routes->match(['get', 'post'], 'dashboard', 'Login::auth');
 $routes->match(['get', 'post'], 'dashboard1', 'Login::forgot_password');
 $routes->match(['get', 'post'], 'update', 'Profile::update');
 $routes->match(['get', 'post'], 'inserisciTamponi', 'Dashboard::inserisciTamponi');
+$routes->match(['get', 'post'], 'prenotaTest', 'Prenota::prenotaTest');
 $routes->get('home', 'Dashboard::home');
 $routes->get('signupChoice', 'Dashboard::scegliRegistrazione');
 $routes->get('login', 'Dashboard::login');

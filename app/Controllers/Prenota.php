@@ -72,4 +72,23 @@ function prenotazione_multipla() {
     echo view('pages/prenotazione/prenotazione_multipla');
     echo view('templates/footer_loggedIn_users');
     }
+
+    function prenotaTest() {
+
+        helper('form');
+        $session = session();
+        $db = \Config\Database::connect();
+        if(isset($_POST['submit'])){
+        $data = $_POST['data_test'];
+        $ora = $_POST['hh_test'];
+        $minuti = $_POST['mm_test'];
+        $tipo = $_POST['tipologiaTest'];
+        $questionario = $_FILES['questionario']['name'];
+        $mail = $session->get('email'); 
+        $table = 'prenotazioni';
+        $sql = "INSERT INTO " .  $table . " VALUES (' aaa ', 'bbb' , 'asasa' , '25/03/22' , '10:30' , '33') ;";
+        $db->query($sql);
+        }
+
+    }
 }
