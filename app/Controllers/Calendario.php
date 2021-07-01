@@ -27,13 +27,20 @@ class Calendario extends BaseController
 	public function loadData()
 	{
 		$event = new calendarioModel();
+		$session = session();
+		$db = \Config\Database::connect();
 		// on page load this ajax code block will be run
-		$data = $event->where([
-			'start >=' => $this->request->getVar('start')
-			
-		])->findAll();
+		$sql = "SELECT start,title FROM calendario WHERE email = '" . $session->get('email') . "';";
+		$data = $db->query($sql)->getResultArray();;
 
 		return json_encode($data);
 	}
 
 }
+
+/*
+= $event->where([
+			'start >=' => $this->request->getVar('start')
+			
+		])->findAll();
+		*/

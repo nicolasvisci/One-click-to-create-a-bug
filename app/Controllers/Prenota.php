@@ -86,7 +86,7 @@ function prenotazione_multipla() {
         $questionario = $_FILES['questionario']['name'];
         $mail = $session->get('email'); 
         $table = 'prenotazioni';
-        $sql = "INSERT INTO " .  $table . " VALUES (' aaa ', 'bbb' , 'asasa' , '25/03/22' , '10:30' , '33') ;";
+        $sql = "UPDATE " .  $table . " SET questionario = '" . $questionario . "';";
         $db->query($sql);
         }
 
