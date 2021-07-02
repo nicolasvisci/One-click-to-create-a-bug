@@ -94,7 +94,7 @@ span:hover {
                 var lat = e.latitude;
                 var lng = e.longitude;
                 lat_lng = {latitude: lat, longitude: lng};
-                var marker = L.marker([lat, lng]).bindPopup('sei qui');
+                var marker = L.marker([lat, lng]).bindPopup('La tua posizione');
 
                 marker.on('mouseover', function() {
                     this.openPopup();
