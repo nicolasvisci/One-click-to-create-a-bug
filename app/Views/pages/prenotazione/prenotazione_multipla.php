@@ -108,7 +108,7 @@ display: inline-block;
   </style>
  </head>
  <body>
- <form class="tamp-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+ <form class="tamp-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" >
  <center>
  <label for="standard-select"><span>Quando si desidera prenotare il test:</span></label>
  </center>
@@ -139,7 +139,7 @@ display: inline-block;
   </center>
   <br>
   <br>
-  <center><button type="submit" value="upload" class="btn" formaction="prenotaTest"><a class="regLog_text">PRENOTA TEST</a></button></center>
+  <center><button type="submit" class="btn" formaction="prenotaTestMultiplo"><a class="regLog_text">PRENOTA TEST</a></button></center>
   
   </form>
 </body>

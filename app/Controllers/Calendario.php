@@ -37,10 +37,3 @@ class Calendario extends BaseController
 	}
 
 }
-
-/*
-= $event->where([
-			'start >=' => $this->request->getVar('start')
-			
-		])->findAll();
-		*/

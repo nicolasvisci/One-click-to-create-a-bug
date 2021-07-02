@@ -133,7 +133,7 @@ display: inline-block;
   </center>
   <br>
   <br>
-  <center><button type="submit" name="submit" class="btn" formaction="prenotaTest"><a class="regLog_text">PRENOTA TEST</a></button></center>
+  <center><button type="submit" name="submit" class="btn" formaction="prenotaTestSingolo"><a class="regLog_text">PRENOTA TEST</a></button></center>
   
   </form>
 </body>

@@ -73,7 +73,25 @@ function prenotazione_multipla() {
     echo view('templates/footer_loggedIn_users');
     }
 
-    function prenotaTest() {
+public function inserisciPrenotazione() {
+
+		helper('form');
+        $session = session();
+        $db = \Config\Database::connect();
+		$query = $db->query("SELECT email_utente,tipologia_test,data,orario FROM prenotazioni WHERE prenotazioni.email_utente = '" . $session->get('email') . "';");
+        foreach ($query->getResultArray() as $row)
+        {
+            $ora = $row['orario'];
+            $email = $row['email_utente'];
+            $data = $row['data'];
+            $tipo = $row['tipologia_test'];
+        }
+		$table = 'calendario';
+		$sql = "INSERT INTO " .  $table . " VALUES ( '" . $tipo . chr(10) . " Ora: " . $ora . "', '" . $data .  "', '" . $email . "') ;";
+        $db->query($sql);
+	}
+
+function prenotaTestSingolo() {
 
         helper('form');
         $session = session();
@@ -84,9 +102,32 @@ function prenotazione_multipla() {
         $minuti = $_POST['mm_test'];
         $tipo = $_POST['tipologiaTest'];
         $questionario = $_FILES['questionario']['name'];
-        $mail = $session->get('email'); 
+        $emailUtente = $session->get('email');
+        $emailLab = $session->get('email_lab'); 
         $table = 'prenotazioni';
-        $sql = "UPDATE " .  $table . " SET questionario = '" . $questionario . "';";
+        $sql = "INSERT INTO " .  $table . " VALUES ( '" . $emailLab . "', '" . $emailUtente . "', '" . $tipo . "', '" . $data . "', '" . $ora . ":" . $minuti . "', ' 1 ', '" . $questionario . "') ;";
+        $db->query($sql);
+        }
+        
+        $this->inserisciPrenotazione();
+        return redirect()->to('/calendario');
+    }
+
+function prenotaTestMultiplo() {
+
+        helper('form');
+        $session = session();
+        $db = \Config\Database::connect();
+        if(isset($_POST['submit'])){
+        $data = $_POST['data_test'];
+        $ora = $_POST['hh_test'];
+        $minuti = $_POST['mm_test'];
+        $tipo = $_POST['tipologiaTest'];
+        $numeroPrenotati = $_POST['number_test'];
+        $emailUtente = $session->get('email');
+        $emailLab = $session->get('email_lab'); 
+        $table = 'prenotazioni';
+        $sql = "INSERT INTO " .  $table . " VALUES ( '" . $emailLab . "', '" . $emailUtente . "', '" . $tipo . "', '" . $data . "', '" . $ora . ":" . $minuti . "', '" . $numeroPrenotati . "', 'NULL') ;";
         $db->query($sql);
         }
 
