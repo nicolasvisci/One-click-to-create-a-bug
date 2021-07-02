@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
 <html>
     <head>
         <title> Tamp </title>
@@ -214,7 +224,7 @@ h1.titolo  {
   background-color: #fff;
 }
 
-form.book-form {
+.book-form {
     background-color: #222;
     padding: 40px 20px;
     margin: 100px;
@@ -222,6 +232,22 @@ form.book-form {
     width: 800px;
     border-radius: 10px;
     position: relative;
+}
+
+div.book-options {
+    float: left;
+    width: 170px;
+    height: 130px;
+    margin-left: 62px;
+  
+    border-radius: 5px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.white-text {
+    color: white;
+    font-weight: bold;
 }
 
 .material-icons {

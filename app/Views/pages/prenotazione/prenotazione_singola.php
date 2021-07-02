@@ -1,20 +1,19 @@
 <?php 
-    $db = \Config\Database::connect(); 
-    $sql = $db->query("SELECT DISTINCT * FROM test, laboratori WHERE test.email = '" . $_SESSION['email_lab'] . "' AND laboratori.email = test.email;")->getResultArray();
-    $nome_lab = $sql[0]['nome_lab'];
-    $email = $sql[0]['email'];
-    $numero_telefono = $sql[0]['numero_telefono'];
-    $tipologia = $sql[0]['tipologia'];
-    $orario_inizio = $sql[0]['orario_inizio'];
-    $orario_fine = $sql[0]['orario_fine'];
-    $costo = $sql[0]['costo'];
-
-    unset($_SESSION["email_lab"]);
+    $db = \Config\Database::connect();
+    $id = $_SESSION['id'];
+    
+    $sql = $db->query("SELECT tipologia, orario_inizio, orario_fine, costo FROM test, laboratori WHERE test.email = laboratori.email AND laboratori.email = '" . $_SESSION['email_lab'] . "' ORDER BY tipologia;")->getResultArray();
+    $tipologia = $sql[$id]['tipologia'];
+    $orario_inizio = $sql[$id]['orario_inizio'];
+    $orario_fine = $sql[$id]['orario_fine'];
+    $costo = $sql[$id]['costo'];
 ?>
 
 <form class="book-form">
-    <h1 style="color:white; font-weight:bold"> <?php echo $nome_lab?></h1>
+
+    <h1 class="white-text"> <?php echo $tipologia?></h1>
+
+    <div style="clear:both;"></div>
+    <button type="submit" name="submit" class="agg_btn" style="background-color: green; margin-left: 250px;" formaction="conferma">PRENOTA TEST</button>
 
 </form>
-
-

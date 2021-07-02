@@ -139,4 +139,5 @@ class Dashboard extends BaseController {
         echo view('pages/modifica/modificaTamp');
         echo view('templates/footer_loggedIn_LAB');
     }
+
 }

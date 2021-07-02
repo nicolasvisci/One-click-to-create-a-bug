@@ -38,23 +38,45 @@ class Prenota extends BaseController {
 
             case "CI":
                 echo view('templates/header_loggedIn');
-                echo view('pages/prenotazione/prenotazione_singola');
+                echo view('pages/prenotazione/prenotazione_cittadino');
                 echo view('templates/footer_loggedIn_users');
                 break;
 
             case "DA":
                 echo view('templates/header_loggedIn');
-                echo view('pages/prenotazione/prenotazione_multipla');
+                echo view('pages/prenotazione/prenotazione_medico_datore');
                 echo view('templates/footer_loggedIn_users');
                 break;
 
             case "ME":
                 echo view('templates/header_loggedIn');
-                echo view('pages/prenotazione/prenotazione_multipla');
+                echo view('pages/prenotazione/prenotazione_medico_datore');
                 echo view('templates/footer_loggedIn_users');
                 break;
         }
     }
 
-    
+    function set_book_data() {
+        session();
+        $id = $_POST['id'];
+        $_SESSION['id'] = $id;
+        return json_encode($id);
+    }
+
+    public function conferma_prenotazione_singola() {
+        session();
+
+        echo view('templates/header_loggedIn');
+        echo view('pages/prenotazione/prenotazione_singola');
+        echo view('templates/footer_loggedIn_users');
+    }
+
+    public function conferma_prenotazione_multipla() {
+        session();
+
+        echo view('templates/header_loggedIn');
+        echo view('pages/prenotazione/prenotazione_multipla');
+        echo view('templates/footer_loggedIn_users');
+    }
+
 }

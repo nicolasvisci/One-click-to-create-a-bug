@@ -1,17 +1,5 @@
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
-
-
-
     <div id="map" style="height: 600px; width:800px; margin-left: 345px;"></div>
-    <button id="click" name="click" type="submit" style="height:50px; width:120px; color:white; margin-left:690px;"> MOSTRA LABORATORI </button>
+    <button id="mostraLab" name="click" type="submit" style="height:50px; width:120px; color:white; margin-left:690px;"> MOSTRA LABORATORI </button>
 
 <script>
 
@@ -65,7 +53,7 @@
             });
     };
 
-    $("#click").click(function(){
+    $("#mostraLab").click(function(){
 
         $.ajax({
             url:"/mostraLaboratori",
@@ -92,7 +80,7 @@
         })
     }
 
-    markers = {};
+    info = {};
 
     function add_markers(data){
 
@@ -119,25 +107,7 @@
 
             marker.on('click', function(e) {
                 var x = e.target.id;
-                mostraLaboratorio(info[x]);
-
-                /*for (var i = 0; i < data.length; i++) {
-                    if(markers[i]['marker']['_latlng']['lat'] == marker['_latlng']['lat']) {
-                        console.log(markers[i]['marker']['_latlng']['lat']);
-                    }
-                }*/
-                //console.log(markers[i]['marker']['_latlng']['lat']);
-                /*for (i = 0; i < data.length; i++) {
-                    if (markers[i][''])
-                }*/
-                //mostraLaboratorio(info[i]);
-                for (var i = 0; i < data.length; i++) {
-                    //console.log(info[i]['nome_lab']);
-                    //console.log(marker[i]['marker']['_latlng']['lat']);
-                    //console.log(marker);
-                    //console.log(markerss[i]['lat']);
-                }
-                
+                mostraLaboratorio(info[x]); 
             });
 
             marker.addTo(map);
