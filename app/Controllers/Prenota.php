@@ -14,8 +14,7 @@ class Prenota extends BaseController {
         ( 6371 * acos( cos( radians(" . $lat . ") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(" . $lng . ") ) + sin( radians(" . $lat . ") ) * sin( radians( lat ) ) ) ) AS distance,
         laboratori.email, numero_telefono
         FROM laboratori
-        JOIN posizione_lab  ON laboratori.email = posizione_lab.email AND laboratori.email IN (SELECT email FROM tamponi 
-        WHERE tamp_1 != 0 OR tamp_2 != 0 OR tamp_3 != 0)
+        JOIN posizione_lab  ON laboratori.email = posizione_lab.email AND laboratori.email IN (SELECT email FROM test)
         HAVING distance <= 30
         ORDER BY distance ASC;")->getResultArray();
 
@@ -32,126 +31,52 @@ class Prenota extends BaseController {
         return json_encode($info);
     }
 
-    function scegli_prenotazione()
-    {
+    function prenotazione() {
         $session = session();
 
         switch ($session->get('tipo_utente')) {
 
             case "CI":
                 echo view('templates/header_loggedIn');
-                echo view('pages/prenotazione/prenotazione_singola');
+                echo view('pages/prenotazione/prenotazione_cittadino');
                 echo view('templates/footer_loggedIn_users');
                 break;
 
             case "DA":
                 echo view('templates/header_loggedIn');
-                echo view('pages/prenotazione/scegli_prenotazione');
+                echo view('pages/prenotazione/prenotazione_medico_datore');
                 echo view('templates/footer_loggedIn_users');
                 break;
 
             case "ME":
                 echo view('templates/header_loggedIn');
-                echo view('pages/prenotazione/scegli_prenotazione');
+                echo view('pages/prenotazione/prenotazione_medico_datore');
                 echo view('templates/footer_loggedIn_users');
                 break;
         }
-
     }
 
-    function prenotazione_singola() {
-        
-                echo view('templates/header_loggedIn');
-                echo view('pages/prenotazione/prenotazione_singola');
-                echo view('templates/footer_loggedIn_users');
+    function set_book_data() {
+        session();
+        $id = $_POST['id'];
+        $_SESSION['id'] = $id;
+        return json_encode($id);
     }
 
-    function prenotazione_multipla() {
-        
-    echo view('templates/header_loggedIn');
-    echo view('pages/prenotazione/prenotazione_multipla');
-    echo view('templates/footer_loggedIn_users');
+    public function conferma_prenotazione_singola() {
+        session();
+
+        echo view('templates/header_loggedIn');
+        echo view('pages/prenotazione/prenotazione_singola');
+        echo view('templates/footer_loggedIn_users');
     }
 
-    function inserisciPrenotazioneSingola() {
+    public function conferma_prenotazione_multipla() {
+        session();
 
-		helper('form');
-        $session = session();
-        $db = \Config\Database::connect();
-		$query = $db->query("SELECT email_utente,tipologia_test,data,orario FROM prenotazioni WHERE prenotazioni.email_utente = '" . $session->get('email') . "';");
-        foreach ($query->getResultArray() as $row)
-        {
-            $ora = $row['orario'];
-            $email = $row['email_utente'];
-            $data = $row['data'];
-            $tipo = $row['tipologia_test'];
-        }
-		$table = 'calendario';
-		$sql = "INSERT INTO " .  $table . " VALUES ( '" . $tipo . chr(10) . " Ora: " . $ora . "', '" . $data .  "', '" . $email . "') ;";
-        $db->query($sql);
-	}
-
-    function inserisciPrenotazioneMultipla() {
-
-		helper('form');
-        $session = session();
-        $db = \Config\Database::connect();
-		$query = $db->query("SELECT email_utente,tipologia_test,data,orario,numero_prenotati FROM prenotazioni WHERE prenotazioni.email_utente = '" . $session->get('email') . "';");
-        foreach ($query->getResultArray() as $row)
-        {
-            $ora = $row['orario'];
-            $email = $row['email_utente'];
-            $data = $row['data'];
-            $tipo = $row['tipologia_test'];
-            $numero = $row['numero_prenotati'];
-        }
-		$table = 'calendario';
-		$sql = "INSERT INTO " .  $table . " VALUES ( '" . $tipo . chr(10) . " Ora: " . $ora . chr(10) . "Numero Prenotati: " . $numero . "', '" . $data .  "', '" . $email . "') ;";
-        $db->query($sql);
-	}
-
-    function prenotaTestSingolo() {
-
-        helper('form');
-        $session = session();
-        $db = \Config\Database::connect();
-        if(isset($_POST['submit'])){
-        $data = $_POST['data_test'];
-        $ora = $_POST['hh_test'];
-        $minuti = $_POST['mm_test'];
-        $tipo = $_POST['tipologiaTest'];
-        $questionario = $_FILES['questionario']['name'];
-        $emailUtente = $session->get('email');
-        $emailLab = $session->get('email_lab'); 
-        $table = 'prenotazioni';
-        $sql = "INSERT INTO " .  $table . " VALUES ( '" . $emailLab . "', '" . $emailUtente . "', '" . $tipo . "', '" . $data . "', '" . $ora . ":" . $minuti . "', ' 1 ', '" . $questionario . "') ;";
-        $db->query($sql);
-        }
-        
-        $this->inserisciPrenotazioneSingola();
-        return redirect()->to('/calendario');
+        echo view('templates/header_loggedIn');
+        echo view('pages/prenotazione/prenotazione_multipla');
+        echo view('templates/footer_loggedIn_users');
     }
 
-    function prenotaTestMultiplo() {
-
-        helper('form');
-        $session = session();
-        $db = \Config\Database::connect();
-        if(isset($_POST['submit'])){
-        $data = $_POST['data_test'];
-        $ora = $_POST['hh_test'];
-        $minuti = $_POST['mm_test'];
-        $tipo = $_POST['tipologiaTest'];
-        $numeroPrenotati = $_POST['number_test'];
-        $emailUtente = $session->get('email');
-        $emailLab = $session->get('email_lab'); 
-        $table = 'prenotazioni';
-        $sql = "INSERT INTO " .  $table . " VALUES ( '" . $emailLab . "', '" . $emailUtente . "', '" . $tipo . "', '" . $data . "', '" . $ora . ":" . $minuti . "', '" . $numeroPrenotati . "', 'NULL') ;";
-        $db->query($sql);
-        }
-
-        $this->inserisciPrenotazioneMultipla();
-        return redirect()->to('/calendario');
-
-    }
 }

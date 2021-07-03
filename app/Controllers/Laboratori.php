@@ -55,5 +55,46 @@ class Laboratori extends BaseController {
 
         }
     }
+
+    public function aggiungi_test() {
+        session();
+        $db = \Config\Database::connect();
+
+        $email = $_SESSION['email'];
+
+        $tipo = $this->request->getVar('tipo');
+        $hh_inizio = $this->request->getVar('hh_inizio');
+        $mm_inizio = $this->request->getVar('mm_inizio');
+        $hh_fine = $this->request->getVar('hh_fine');
+        $mm_fine = $this->request->getVar('mm_fine');
+        $unita = $this->request->getVar('unita');
+        $centesimi = $this->request->getVar('centesimi');
+
+        if ($this->request->getMethod() === 'post' && $this->validate([
+            'tipo' => 'required',
+            'hh_inizio' => 'required|min_length[1]|max_length[2]',
+            'mm_inizio' => 'required|min_length[1]|max_length[2]',
+            'hh_fine' => 'required|min_length[1]|max_length[2]',
+            'mm_fine' => 'required|min_length[1]|max_length[2]',
+            'unita' => 'required|min_length[1]|max_length[3]',
+            'centesimi' => 'required|min_length[1]|max_length[2]',
+        ])) 
+
+        {
+            $sql = $db->query("SELECT * FROM test WHERE email = '" . $email . "' AND tipologia = '" . $tipo . "' ")->getResultArray();
+
+            if($sql) {
+                $sql = $db->query("UPDATE test SET orario_inizio = '" . $hh_inizio . ":" . $mm_inizio . "'," . "orario_fine = '" . $hh_fine . ":" . $mm_fine . "', costo = " . $unita . "." . $centesimi . " WHERE email = '" . $email . "' AND tipologia = '" . $tipo . "';");
+            
+            } else {
+
+                $sql = $db->query("INSERT INTO test VALUES ('" . $tipo . "', '" . $hh_inizio . ":" . $mm_inizio . "', '" . $hh_fine . ":" . $mm_fine . "', " . $unita . "." . $centesimi . ", '" . $email . "');");
+            } 
+        }
+
+        echo view('templates/header_loggedIn_LAB');
+        echo view('pages/tipiTampone');
+        echo view('templates/footer_loggedIn_LAB');
+    }
     
 } 

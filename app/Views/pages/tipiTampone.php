@@ -39,24 +39,20 @@ text-align: center;
 border: 0px; 
 }
 
-label {
-color: white; font-family: 'Helvetica Neue', sans-serif; 
-font-size: 30px; 
+h2 { color: white; font-family: 'Helvetica Neue', sans-serif; 
+font-size: 40px; 
 font-weight: bold; 
 letter-spacing: -1px;
 line-height: 1;
-border: 0px;
-font-weight: 500;
-margin-left: 110px;
+border: 0px; 
 }
 
-.select + label {
-  margin-top: 2rem;
+a {
+  font-size: 25px;
 }
 
 .set_tamp {
 
-  margin-left: 0px;
   position:relative;
   display:inline-block;
 
@@ -64,55 +60,30 @@ margin-left: 110px;
 
 #element1 {
   display:inline-block;
-  margin-right:70px;
+  margin-right:100px;
+  margin-left:120px;
 }
 
 #element2 {
   display:inline-block;
-  margin-right:150px;
+  margin-right:100px;
 }
 
 #element3 {
-  display:inline-block;
+  
   margin-right:60px;
 }
 
 #element4 {
   position: relative;
-  left: 60px;
-  display:inline-block;
-  margin-right:140px;
+  top: 35px;
 }
 
 #element5 {
-  display:inline-block;
   position: relative;
-  margin-right:150px;
+  bottom: 35px;
 }
 
-#element6 {
-  display:inline-block;
-  position: relative;
-  right:30px;
-}
-
-#element7 {
-  position: relative;
-  left: 60px;
-  display:inline-block;
-  margin-right:265px;
-}
-
-#element8 {
-  display:inline-block;
-  margin-right:250px;
-}
-
-#element9 {
-  display:inline-block;
-  position: relative;
-  right:10px;
-}
 
 .btn {
   position: relative;
@@ -121,7 +92,7 @@ margin-left: 110px;
 
 .tamp-form {
     position: relative;
-    bottom: 50px;
+    top: 20px;
     background-color: #222;
     border-radius: 10px;
     width: 1500px;
@@ -142,108 +113,57 @@ margin-left: 110px;
 
 </style>
 
-
-<h1><span class="w3-margin w3-jumbo Title">INSERISCI I TIPI DI TAMPONE DISPONIBILI</span></h1>
 <body>
-<form class="tamp-form" action="" method="post">
-<label for="standard-select"><span>Test molecolare</span></label>
-    <select name="Test1">
-        <option value="Disponibile">Disponibile</option>
-        <option value="NonDisponibile">Non disponibile</option>
-    </select>
-<label for="standard-select"><span>Test antigenico rapido</span></label>
-    <select name="Test2">
-        <option value="Disponibile">Disponibile</option>
-        <option value="NonDisponibile">Non disponibile</option>
-    </select>
-<label for="standard-select"><span>Test sierologico</span></label>
-    <select name="Test3">
-        <option value="Disponibile">Disponibile</option>
-        <option value="NonDisponibile">Non disponibile</option>
-    </select>
-    <br>
-    <br>
-<div id="element1">
-<label for="standard-select"><span>Costo</span></label>
-</div>
-<input class="set_tamp" type="number" name="Costo1" min="0" max="999"> , 
-<input class="set_tamp" type="number" name="Costo1a" min="0" max="999" > €
-<div id="element2">
-<label for="standard-select"><span>Costo</span></label>
-</div>
-<input class="set_tamp" type="number" name="Costo2" min="0" max="999" > ,
-<input class="set_tamp" type="number" name="Costo2a" min="0" max="999" > €
-<div id="element3">
-<label for="standard-select"><span>Costo</span></label>
-</div>
-<input class="set_tamp" type="number" name="Costo3" min="0" max="999" > ,
-<input class="set_tamp" type="number" name="Costo3a" min="0" max="999" > €
-<button type="submit" name="submit" class="btn" formaction="inserisciTamponi"><a class="regLog_text">Invia</a></button>
+<form class="tamp-form" method="post">
+<h1><span class="w3-margin w3-jumbo Title">INSERISCI I TIPI DI TAMPONE DISPONIBILI</span></h1>
+    <div id="element1" class="input-form">
+    <a style="color:white">Test: </a><select name="tipo" class="set_tamp">
+            <option value=""> Seleziona il test da aggiungere </option>
+            <option value="test antigenico rapido"> Test antigenico rapido </option>
+            <option value="test molecolare"> Test molecolare </option>
+            <option value="test sierologico"> Test sierologico </option>
+        </select>
+        </div>
+        <div id="element2" class = "input-form">
+            <a style="color:white"> Orario di inizio: </a> <input name="hh_inizio" class="set_tamp" type="number" min="0" max="23" placeholder="23"><a style="color:white">:</a><input name="mm_inizio" class="set_tamp" type="number" min="0" max="59" placeholder="00">
+        </div>
+        <div id="element2" class = "input-form">
+            <a style="color:white"> Orario di fine: </a> <input name="hh_fine" class="set_tamp" type="number" min="0" max="23" placeholder="23"><a style="color:white">:</a><input name="mm_fine" class="set_tamp" type="number" min="0" max="59" placeholder="00">
+        </div>
+        <br>
+        <br>
+        <center>
+        <div id="element3" class = "input-form">
+            <a style="color:white "> Costo: </a> <input name="unita" class="set_tamp" type="number" min="0" max="999" ><a style="color:white"> , </a><input name="centesimi" class="set_tamp" type="number" min="00" max="99" placeholder="00"><a style="color:white"> €</a>
+        </div>
+        </center>
+    </div>
+    <button class="btn" formaction="aggiungi_test"> AGGIUNGI TEST </button>
+
 </form>
-<form class="tamp-form2">
+
+<br>
+
+<div class="tamp-form2">
     <?php 
         $db = \Config\Database::connect();
-        $session = session();
 
-        $sql = $db->query("SELECT tamp_1, tamp_2, tamp_3, costo_1, costo_2, costo_3 FROM tamponi,laboratori WHERE tamponi.email=laboratori.email AND laboratori.email = '" . $_SESSION['email'] . "' ;")->getResultArray();
+        $sql = $db->query("SELECT tipologia, orario_inizio, orario_fine, costo FROM test, laboratori WHERE test.email = laboratori.email AND laboratori.email = '" . $_SESSION['email'] . "' ;")->getResultArray();
         $tuples = count($sql);
 
-        for ($i = 0; $i < $tuples; $i++) {
-            if($sql[$i]['tamp_1']=='0'){
-                ?>
-                <div id="element4">
-                <p class="output-form">Disponibilità attuale: <?php echo 'Non disponibile'; ?></p>
-                </div>
-                <?php
-            }else{
-                ?>
-                <div id="element4">
-                <p class="output-form">Disponibilità attuale : <?php echo 'Disponibile'; ?></p>
-                </div>
-                <?php
-            }
-                ?>
-                <?php
-           if($sql[$i]['tamp_2']=='0'){
-                ?>
-                <div id="element5">
-                <p class="output-form">Disponibilità attuale : <?php echo 'Non disponibile'; ?></p>
-                </div>
-                <?php
-            }else{
-                  ?>
-                  <div id="element5">
-                  <p class="output-form">Disponibilità attuale: <?php echo 'Disponibile'; ?></p>
-                  </div>
-                  <?php
-            }
-                  ?>
-                  <?php
-            if($sql[$i]['tamp_3']=='0'){
-                  ?>
-                  <div id="element6">
-                  <p class="output-form">Disponibilità attuale: <?php echo 'Non disponibile'; ?></p>
-                  </div>
-                  <?php
-            }else{
-                  ?>
-                  <div id="element6">
-                  <p class="output-form">Disponibilità attuale : <?php echo 'Disponibile'; ?></p>
-                  </div>
-                  <?php
-            }
-                  ?>
-            <div id="element7">
-            <p class="output-form">Costo attuale : <?php echo $sql[$i]['costo_1']; ?> €</p>
-            </div>
-            <div id="element8">
-            <p class="output-form">Costo attuale : <?php echo $sql[$i]['costo_2']; ?> €</p>
-            </div>
-            <div id="element9">
-            <p class="output-form">Costo attuale : <?php echo $sql[$i]['costo_3']; ?> €</p>
-            </div>
-            <?php
-        } ?>
-</form>
+        ?>
+        <h2 class="titolo" style="display:inline-block; margin-right:280px; margin-left:160px" ><span> TIPO DI TEST </span></h2>
+        <h2 class="titolo" style="display:inline-block; margin-right:300px"><span> ORARIO </span></h2>
+        <h2 class="titolo" style="display:inline-block; "><span> COSTO </span></h2>
+        <?php
 
-</body>
+        for ($i = 0; $i < $tuples; $i++) {
+            ?>
+            <div class="row">
+            <div id="element4" style="text-align:left; margin-left:150px" ><a style="color:white"> <?php echo $sql[$i]['tipologia']?> </a></div> 
+            <div style="text-align:center"><a style="color:white"> <?php  echo $sql[$i]['orario_inizio'] . "-" . $sql[$i]['orario_fine'] ?> </a></div> 
+            <div id="element5" style="text-align:right; margin-right:250px"><a style="color:white"> <?php echo $sql[$i]['costo']  . "€" ;?> </a></div> 
+            </div>
+            
+        <?php } ?>
+</div>
