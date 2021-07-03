@@ -5,10 +5,6 @@
     $nome_lab = $sql[0]['nome_lab'];
     $email = $sql[0]['email'];
     $numero_telefono = $sql[0]['numero_telefono'];
-    $tipologia = $sql[0]['tipologia'];
-    $orario_inizio = $sql[0]['orario_inizio'];
-    $orario_fine = $sql[0]['orario_fine'];
-    $costo = $sql[0]['costo'];
     
 
     //unset($_SESSION["email_lab"]);
@@ -31,7 +27,7 @@
 
         for ($i = 0; $i < $tuples; $i++) {
             ?>
-            <div class="book-options"> <?php echo $sql[$i]['tipologia'] ?> <br> <?php echo "Orario: " . $sql[$i]['orario_inizio'] . "-" . $sql[$i]['orario_fine'] ?> <br> <?php echo "Costo: " . $sql[$i]['costo']  . "€" ;?> <br> 
+            <div class="book-options"> <?php echo $sql[$i]['tipologia'] ?> <br> <?php echo "Orario: " . substr($sql[$i]['orario_inizio'], 0, 5) . "-" . substr($sql[$i]['orario_fine'], 0, 5)?> <br> <?php echo "Costo: " . $sql[$i]['costo']  . "€" ;?> <br> 
                 <tr> <td> <input type="checkbox" name="seleziona" value="1" tabIndex="1" onclick="ckChange(this)"> </td> </tr> 
             </div>
     <?php 

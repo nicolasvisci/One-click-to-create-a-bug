@@ -237,7 +237,7 @@ h1.titolo  {
 div.book-options {
     float: left;
     width: 170px;
-    height: 130px;
+    height: 100px;
     margin-left: 62px;
   
     border-radius: 5px;
