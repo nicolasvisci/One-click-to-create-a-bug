@@ -41,7 +41,7 @@ div.book-options {
 .white-text {
     color: white;
     font-weight: bold;
-    border: none;
+
 }
 
 .btn {
