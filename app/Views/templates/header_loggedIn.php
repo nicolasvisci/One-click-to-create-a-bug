@@ -213,15 +213,21 @@ h1.titolo  {
     font-weight:bold;
 }
 
+h3.titolo {
+    display:inline;
+    color:white; 
+    font-weight:bold;
+}
+
 .row div{
-  float:left;
-  width: 170px;
-  height: 50px;
-  
-  border-radius: 5px;
-  text-align: center;
-  margin: 10px;
-  background-color: #fff;
+    float:left;
+    width: 170px;
+    height: 50px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+    margin: 10px;
+    background-color: #fff;
 }
 
 .book-form {
@@ -249,8 +255,8 @@ div.book-options {
     background-color: #222;
     padding: 40px 20px;
     margin: 100px;
-    margin-left: 270px; 
-    width: 1000px;
+    margin-left: 190px; 
+    width: 1160px;
     border-radius: 10px;
     position: relative;
 }

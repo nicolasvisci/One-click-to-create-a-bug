@@ -5,9 +5,6 @@
     $nome_lab = $sql[0]['nome_lab'];
     $email = $sql[0]['email'];
     $numero_telefono = $sql[0]['numero_telefono'];
-    
-
-    //unset($_SESSION["email_lab"]);
 ?>
 
 <div class="book-form">
@@ -81,8 +78,7 @@
                 type: 'POST',
                 data: {id},
                 dataType: "json",
-                success: function(res){
-                    console.log(res);
+                success: function(){
                     window.location.href = "/conferma_prenotazione_singola";
                 }
             });

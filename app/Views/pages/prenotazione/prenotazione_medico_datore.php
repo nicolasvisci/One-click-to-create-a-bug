@@ -5,8 +5,6 @@
     $nome_lab = $sql[0]['nome_lab'];
     $email = $sql[0]['email'];
     $numero_telefono = $sql[0]['numero_telefono'];
-    
-    //unset($_SESSION["email_lab"]);
 ?>
 
 <div class="book-form">

@@ -55,6 +55,7 @@ $routes->post('setBookData', 'Prenota::set_book_data');
 $routes->get('conferma_prenotazione_singola', 'Prenota::conferma_prenotazione_singola');
 $routes->get('conferma_prenotazione_multipla', 'Prenota::conferma_prenotazione_multipla');
 $routes->match(['get', 'post'], 'conferma_prenotazione', 'Prenota::conferma_prenotazione');
+$routes->post('annulla_prenotazione', 'History::annulla_prenotazione');
 $routes->get('modificaTamp', 'Dashboard::modificaTamp');
 $routes->post('aggiungi_test', "Laboratori::aggiungi_test");
 $routes->get('/', 'Pages::index');
