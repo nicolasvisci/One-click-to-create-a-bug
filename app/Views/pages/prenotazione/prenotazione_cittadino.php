@@ -15,7 +15,10 @@
     <h1 class="white-text"> <?php echo $nome_lab?></h1>
     <h5 class="white-text"> email: <?php echo $email?></h5>
     <h5 class="white-text"> numero di telefono: <?php echo $numero_telefono?></h5>
-    <br> <br>
+    <br>
+    <h5 class="white-text"> Scarica questionario anamnesi: <button type="submit" name="notifiche" class="material-icons"><a class="icons" style="font-size: 30px; text-decoration: none;" href="/questionario_anamnesi.pdf" download="questionario_anamnesi.pdf">file_download</a></button></h5>
+    <br>
+    <hr>
     <h2 class="white-text"> Test disponibili </h2>
 
     <?php

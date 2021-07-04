@@ -130,14 +130,23 @@ class Dashboard extends BaseController {
         echo view('pages/prenotazione/mappa');
         echo view('templates/footer_loggedIn_users');
     }
+    
+    public function history() {
+        session();
+
+        echo view('templates/header_loggedIn');
+        echo view('pages/history/history');
+        echo view('templates/footer_loggedIn_users');
+    }
 
     public function modificaTamp() {
         session();
-        $db = \Config\Database::connect();
 
         echo view('templates/header_loggedIn');
         echo view('pages/modifica/modificaTamp');
         echo view('templates/footer_loggedIn_LAB');
     }
+
+    
 
 }

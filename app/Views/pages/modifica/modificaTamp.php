@@ -36,7 +36,7 @@
 
         for ($i = 0; $i < $tuples; $i++) {
             ?>
-            <div class="row"><div> <?php echo $sql[$i]['tipologia']?> </div> <div style="margin-left: 105px;"> <?php  echo $sql[$i]['orario_inizio'] . "-" . $sql[$i]['orario_fine'] ?> </div> <div style="margin-left: 105px;"> <?php echo $sql[$i]['costo']  . "€" ;?> </div> </div>
+            <div class="row"><div> <?php echo $sql[$i]['tipologia']?> </div> <div style="margin-left: 105px;"> <?php  echo substr($sql[$i]['orario_inizio'], 0, 5) . "-" . substr($sql[$i]['orario_fine'], 0, 5) ?> </div> <div style="margin-left: 105px;"> <?php echo $sql[$i]['costo']  . "€" ;?> </div> </div>
             
         <?php } ?>
 </div>

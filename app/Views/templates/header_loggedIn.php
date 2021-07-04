@@ -245,6 +245,16 @@ div.book-options {
     background-color: #fff;
 }
 
+.history-form {
+    background-color: #222;
+    padding: 40px 20px;
+    margin: 100px;
+    margin-left: 270px; 
+    width: 1000px;
+    border-radius: 10px;
+    position: relative;
+}
+
 .white-text {
     color: white;
     font-weight: bold;

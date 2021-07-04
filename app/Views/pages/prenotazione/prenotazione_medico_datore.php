@@ -14,7 +14,7 @@
     <h1 class="white-text"> <?php echo $nome_lab?></h1>
     <h5 class="white-text"> email: <?php echo $email?></h5>
     <h5 class="white-text"> numero di telefono: <?php echo $numero_telefono?></h5>
-    <br> <br>
+    <br> <hr> 
     <h2 class="white-text"> Test disponibili </h2>
 
     <?php

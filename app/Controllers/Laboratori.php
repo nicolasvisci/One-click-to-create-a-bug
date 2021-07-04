@@ -80,7 +80,7 @@ class Laboratori extends BaseController {
             'mm_fine' => 'required|min_length[1]|max_length[2]',
             'unita' => 'required|min_length[1]|max_length[3]',
             'centesimi' => 'required|min_length[1]|max_length[2]',
-        ])) 
+        ]) && $hh_inizio < $hh_fine)   
 
         {
             $sql = $db->query("SELECT * FROM test WHERE email = '" . $email . "' AND tipologia = '" . $tipo . "' ")->getResultArray();

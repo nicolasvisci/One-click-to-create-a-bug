@@ -109,7 +109,7 @@ class Prenota extends BaseController {
 
             {
                 $sql = $db->query("INSERT INTO prenotazioni VALUES ('" . $email_lab . "', '" . $email . "', '" . 
-                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ");");
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ", '');");
 
                 unset($_SESSION['email_lab']);
                 unset($_SESSION['id']);
@@ -130,8 +130,31 @@ class Prenota extends BaseController {
             && strtotime($orario) < strtotime($orario_fine)) 
 
             {
+                $questionario = '';
+
+                if(isset($_FILES['questionario']['size']) && $_FILES['questionario']['size'] > 0) {
+                    $uploadDir = 'C:/Sviluppo SW/Xampp/htdocs/CodeIgniter/app/Views/questionari/questionari_compilati/';
+                    $questionario = basename($_FILES['questionario']['name']);
+                    $uploadedFile = $uploadDir . $questionario;
+                    
+                    if (file_exists($uploadedFile)) {
+                        $temp = explode(".", basename($_FILES['questionario']['name']));
+                        $uploadedFile = $temp[0];
+                        
+                        for ($i = 1; $i < count($temp)-1; $i++) {
+                            $uploadedFile = $uploadedFile . '.' . $temp[$i]; 
+                        }
+
+                        $questionario = $uploadedFile . round(microtime(true)) . '.' . end($temp);
+                        $uploadedFile = $uploadDir . $questionario;
+                    }
+
+                    
+                    move_uploaded_file($_FILES['questionario']['tmp_name'], $uploadedFile);
+                }
+                
                 $sql = $db->query("INSERT INTO prenotazioni VALUES ('" . $email_lab . "', '" . $email . "', '" . 
-                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1);");
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1, '" . $db->escapeString($questionario) . "');");
 
                 unset($_SESSION['email_lab']);
                 unset($_SESSION['id']);

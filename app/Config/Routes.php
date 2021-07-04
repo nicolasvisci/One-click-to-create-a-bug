@@ -45,6 +45,7 @@ $routes->get('info', 'Dashboard::info');
 $routes->get('profile', 'Dashboard::profile');
 $routes->get('logout', 'Dashboard::logout');
 $routes->get('prenota', 'Dashboard::prenota');
+$routes->get('history', 'Dashboard::history');
 $routes->match(['get', 'post'], 'update', 'Profile::update');
 $routes->post('delete', 'Profile::delete');
 $routes->post('mostraLaboratori', 'Prenota::closest_locations');
