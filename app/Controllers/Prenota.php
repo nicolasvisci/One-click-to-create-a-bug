@@ -79,4 +79,92 @@ class Prenota extends BaseController {
         echo view('templates/footer_loggedIn_users');
     }
 
+    public function conferma_prenotazione() {
+        session();
+        $db = \Config\Database::connect();
+
+        $email = $_SESSION['email'];
+        $email_lab = $_SESSION['email_lab'];
+        $id = $_SESSION['id'];
+        $sql = $db->query("SELECT tipologia, orario_inizio, orario_fine, costo FROM test, laboratori WHERE test.email = laboratori.email AND laboratori.email = '" . $_SESSION['email_lab'] . "' ORDER BY tipologia;")->getResultArray()[$id];
+        $orario_inizio = $sql['orario_inizio'];
+        $orario_fine = $sql['orario_fine'];
+        $tipologia = $sql['tipologia'];
+
+        $data_prenotazione = $this->request->getVar('data_prenotazione');
+        $hh = $this->request->getVar('hh');
+        $mm = $this->request->getVar('mm');
+        $orario = $hh . ":" . $mm;
+
+        if($_SESSION['prenotazione'] === 'prenotazione_multipla') {
+            $numero_prenotati = $this->request->getVar('numero_prenotati');
+
+            if ($this->request->getMethod() === 'post' && $this->validate([
+                'data_prenotazione' => 'required',
+                'hh' => 'required|min_length[1]|max_length[2]',
+                'mm' => 'required|min_length[1]|max_length[2]',
+                'numero_prenotati' => 'required|min_length[1]|max_length[2]'
+            ]) && strtotime($data_prenotazione) > strtotime('now') && strtotime($orario) > strtotime($orario_inizio)
+               && strtotime($orario) < strtotime($orario_fine) && $numero_prenotati > 1 && $numero_prenotati <= 20)
+
+            {
+                $sql = $db->query("INSERT INTO prenotazioni VALUES ('" . $email_lab . "', '" . $email . "', '" . 
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ", '');");
+
+                unset($_SESSION['email_lab']);
+                unset($_SESSION['id']);
+                unset($_SESSION['prenotazione']);
+                return redirect()->to('home');
+
+            } else {
+                return redirect()->to('conferma_prenotazione_multipla');
+            }
+
+        } else {
+
+            if ($this->request->getMethod() === 'post' && $this->validate([
+                'data_prenotazione' => 'required',
+                'hh' => 'required|min_length[1]|max_length[2]',
+                'mm' => 'required|min_length[1]|max_length[2]'
+            ]) && strtotime($data_prenotazione) > strtotime('now') && strtotime($orario) > strtotime($orario_inizio)
+            && strtotime($orario) < strtotime($orario_fine)) 
+
+            {
+                $questionario = '';
+
+                if(isset($_FILES['questionario']['size']) && $_FILES['questionario']['size'] > 0) {
+                    $uploadDir = 'C:/Sviluppo SW/Xampp/htdocs/CodeIgniter/app/Views/questionari/questionari_compilati/';
+                    $questionario = basename($_FILES['questionario']['name']);
+                    $uploadedFile = $uploadDir . $questionario;
+                    
+                    if (file_exists($uploadedFile)) {
+                        $temp = explode(".", basename($_FILES['questionario']['name']));
+                        $uploadedFile = $temp[0];
+                        
+                        for ($i = 1; $i < count($temp)-1; $i++) {
+                            $uploadedFile = $uploadedFile . '.' . $temp[$i]; 
+                        }
+
+                        $questionario = $uploadedFile . round(microtime(true)) . '.' . end($temp);
+                        $uploadedFile = $uploadDir . $questionario;
+                    }
+
+                    
+                    move_uploaded_file($_FILES['questionario']['tmp_name'], $uploadedFile);
+                }
+                
+                $sql = $db->query("INSERT INTO prenotazioni VALUES ('" . $email_lab . "', '" . $email . "', '" . 
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1, '" . $db->escapeString($questionario) . "');");
+
+                unset($_SESSION['email_lab']);
+                unset($_SESSION['id']);
+                unset($_SESSION['prenotazione']);
+                return redirect()->to('home');
+
+            } else {
+                return redirect()->to('conferma_prenotazione_singola');
+            }
+        }
+    }
+
 }

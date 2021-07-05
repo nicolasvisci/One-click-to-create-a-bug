@@ -5,15 +5,10 @@ namespace App\Models\webApp;
 use CodeIgniter\Model;
 
 class CalendarioModel extends Model {
-	protected $table                = 'calendario';
-	protected $primaryKey           = 'id';
-	protected $useAutoIncrement     = true;
-	protected $insertID             = 0;
-	protected $returnType           = 'array';
-	protected $useSoftDelete        = false;
-	protected $protectFields        = true;
+	protected $table                = 'events';
 	protected $allowedFields        = [
 		'title',
-		'start'
+		'start_event',
+		'end_event'
 	];
 }

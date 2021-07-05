@@ -10,30 +10,25 @@ class Calendario extends BaseController
 	{
 		helper(["html"]);
 	}
-	public function index()
-	{
-        echo view('templates/header_loggedIn');
-		echo view('pages/calendario');
-        echo view('templates/footer_loggedIn_users');
-	}
 
-	public function index2()
+	public function index()
 	{
         echo view('templates/header_loggedIn_LAB');
 		echo view('pages/calendario');
         echo view('templates/footer_loggedIn_LAB');
 	}
 
-	public function loadData()
+	public function load()
 	{
 		$event = new calendarioModel();
 		$session = session();
 		$db = \Config\Database::connect();
 		// on page load this ajax code block will be run
-		$sql = "SELECT start,title FROM calendario WHERE email = '" . $session->get('email') . "';";
+		$sql = "SELECT id,title,start_event,end_event FROM events ;";
 		$data = $db->query($sql)->getResultArray();;
 
 		return json_encode($data);
 	}
 
 }
+//WHERE email = '" . $session->get('email') . "'
