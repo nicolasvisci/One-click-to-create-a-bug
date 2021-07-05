@@ -93,7 +93,7 @@ class Laboratori extends BaseController {
         }
 
         echo view('templates/header_loggedIn_LAB');
-        echo view('pages/tipiTampone');
+        echo view('pages/tamponi/tipiTampone');
         echo view('templates/footer_loggedIn_LAB');
     }
     

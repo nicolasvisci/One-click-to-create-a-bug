@@ -158,7 +158,7 @@ button {
     margin-left: 420px;
 }
 
-#calendario {
+#history {
     margin-left: 500px;
 }
 

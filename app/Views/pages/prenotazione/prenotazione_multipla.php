@@ -1,3 +1,52 @@
+<style>
+span {
+  transition: background-size .5s, background-position .3s ease-in .5s;
+}
+span:hover {
+  transition: background-position .5s, background-size .3s ease-in .5s;
+}
+span {
+  background-image: linear-gradient(orange, orange);
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+  background-size: 100% 0px;
+  border-radius: 10px 10px 10px 10px;
+}
+span:hover {
+  background-size: 100% 100%;
+  background-position: 0% 0%;
+}
+
+.btn {
+  background-color: orange;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 35%;
+  margin-bottom: 10px;
+}
+
+.book-form {
+    background-color: #222;
+    padding: 30px 20px;
+    margin: 100px;
+    margin-left: 370px; 
+    width: 800px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.white-text {
+    color: white;
+    font-weight: bold;
+
+}
+
+</style>
+
 <?php 
     $db = \Config\Database::connect();
     $id = $_SESSION['id'];
@@ -11,13 +60,15 @@
 ?>
 
 <form class="book-form" method='post'>
-
-    <h1 class="white-text"> <?php echo $tipologia?></h1>
+    <center>
+    <h1 class="white-text"><span> <?php echo strtoupper($tipologia)?></span></h1>
     <h4 class="white-text">Orario disponibile: <?php echo $orario_inizio . "-" . $orario_fine ?></h4>
     <h4 class="white-text">Costo: <?php echo $costo . "€"?></h4>
     <br><hr>
-    <h4 class="white-text">Data: <input type="date" name="data_prenotazione" style="border: 3px solid var(--clr-bg); border-radius: 2px; padding: .3em; margin-right: 100px;"> Ora: <input name="hh" class="set_tamp" type="number" min="0" max="23" placeholder="23">:<input name="mm" class="set_tamp" type="number" min="0" max="59" placeholder="00"></h4>
-    <h4 class="white-text" style="margin-top:50px">Numero prenotati: <input type="number" name="numero_prenotati" min="0" max="20" placeholder="2" style="border: 3px solid var(--clr-bg); border-radius: 2px; padding: .3em;"> </h4>
-    <button type="submit" name="submit" class="agg_btn" style="background-color: green; margin-left: 250px;" formaction="conferma_prenotazione">PRENOTA TEST</button>
+    <h4 class="white-text">Data: <input type="date" name="data_prenotazione">
+    <br> Ora: <input name="hh" class="set_tamp" type="number" min="0" max="23" placeholder="23">:<input name="mm" class="set_tamp" type="number" min="0" max="59" placeholder="00"></h4>
+    <h4 class="white-text" style="margin-top:50px">Numero prenotati: <input type="number" name="numero_prenotati" min="0" max="20" placeholder="2"> </h4><br>
+    <button type="submit" name="submit" class="btn" formaction="conferma_prenotazione">PRENOTA TEST</button>
+    </center>
 
 </form>

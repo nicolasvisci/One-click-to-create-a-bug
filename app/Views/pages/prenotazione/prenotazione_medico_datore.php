@@ -93,7 +93,7 @@ div.book-options {
         for ($i = 0; $i < $tuples; $i++) {
             ?>
             <center>
-            <div class="book-options"> <?php echo $sql[$i]['tipologia'] ?> <br> <?php echo "Orario: " . $sql[$i]['orario_inizio'] . "-" . $sql[$i]['orario_fine'] ?> <br> <?php echo "Costo: " . $sql[$i]['costo']  . "€" ;?> <br> 
+            <div class="book-options"> <?php echo strtoupper($sql[$i]['tipologia']) ?> <br> <?php echo "Orario: " . $sql[$i]['orario_inizio'] . "-" . $sql[$i]['orario_fine'] ?> <br> <?php echo "Costo: " . $sql[$i]['costo']  . "€" ;?> <br> 
                 <tr> <td> <center><input type="checkbox" name="seleziona" value="1" tabIndex="1" onclick="ckChange(this)"></center> </td> </tr> 
             </div>
             </center>

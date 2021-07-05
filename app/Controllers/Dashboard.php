@@ -119,7 +119,7 @@ class Dashboard extends BaseController {
     public function download() {
 
         echo view('templates/header_loggedIn');
-        echo view('pages/download');
+        echo view('pages/questionari/download');
         echo view('templates/footer_loggedIn_users');
     }
 
@@ -129,8 +129,16 @@ class Dashboard extends BaseController {
         session();
         $db = \Config\Database::connect();
         echo view('templates/header_loggedIn_LAB');
-        echo view('pages/tipiTampone');
+        echo view('pages/tamponi/tipiTampone');
         echo view('templates/footer_loggedIn_LAB');
+    }
+
+    public function history() {
+        session();
+
+        echo view('templates/header_loggedIn');
+        echo view('pages/tamponi/history');
+        echo view('templates/footer_loggedIn_users');
     }
 
     

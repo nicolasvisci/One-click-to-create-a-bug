@@ -14,7 +14,7 @@ class Calendario extends BaseController
 	public function index()
 	{
         echo view('templates/header_loggedIn_LAB');
-		echo view('pages/calendario');
+		echo view('pages/tamponi/calendario');
         echo view('templates/footer_loggedIn_LAB');
 	}
 
