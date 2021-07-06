@@ -55,7 +55,7 @@ $routes->get('prenota', 'Dashboard::prenota');
 $routes->get('history', 'Dashboard::history');
 $routes->post('aggiungi_test', "Laboratori::aggiungi_test");
 $routes->get('calendario', 'Calendario::index');
-$routes->get('event', 'Calendario::load');
+$routes->get('event', 'Calendario::loadData');
 $routes->post('mostraLaboratori', 'Prenota::closest_locations');
 $routes->post('getData', 'Prenota::get_data');
 $routes->get('prenotazione', 'Prenota::prenotazione');
