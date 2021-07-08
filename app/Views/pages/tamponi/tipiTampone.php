@@ -47,8 +47,19 @@ line-height: 1;
 border: 0px; 
 }
 
+h2.titolo {
+    color:white; 
+    border-radius: 5px;
+    width: 200px;
+    height: 35px;
+    text-align: center;
+    font-weight:bold;
+    position:relative;
+}
+
 a {
   font-size: 25px;
+  width:60px;
 }
 
 .set_tamp {
@@ -108,12 +119,13 @@ a {
     margin-left: 10px;
 }
 
-
-
-
 </style>
 
 <body>
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <form class="tamp-form" method="post">
 <h1><span class="w3-margin w3-jumbo Title">INSERISCI I TIPI DI TAMPONE DISPONIBILI</span></h1>
     <div id="element1" class="input-form">
@@ -139,12 +151,13 @@ a {
         </center>
     </div>
     <button class="btn" formaction="aggiungi_test"> AGGIUNGI TEST </button>
+     
 
 </form>
 
-<br>
 
 <div class="tamp-form2">
+<hr style="width:80%; position:relative; margin-left:150px">
     <?php 
         $db = \Config\Database::connect();
 
@@ -152,17 +165,17 @@ a {
         $tuples = count($sql);
 
         ?>
-        <h2 class="titolo" style="display:inline-block; margin-right:280px; margin-left:160px" ><span> TIPO DI TEST </span></h2>
-        <h2 class="titolo" style="display:inline-block; margin-right:300px"><span> ORARIO </span></h2>
-        <h2 class="titolo" style="display:inline-block; "><span> COSTO </span></h2>
+        <h2 class="titolo" style="display:inline-block; margin-right:280px; margin-left:170px;" ><span> TIPO DI TEST </span></h2>
+        <h2 class="titolo" style="display:inline-block; margin-right:300px;"><span> ORARIO </span></h2>
+        <h2 class="titolo" style="display:inline-block; position:relative;"><span> COSTO </span></h2>
         <?php
 
         for ($i = 0; $i < $tuples; $i++) {
             ?>
             <div class="row">
-            <div id="element4" style="text-align:left; margin-left:150px" ><a style="color:white"> <?php echo $sql[$i]['tipologia']?> </a></div> 
-            <div style="text-align:center"><a style="color:white"> <?php  echo $sql[$i]['orario_inizio'] . "-" . $sql[$i]['orario_fine'] ?> </a></div> 
-            <div id="element5" style="text-align:right; margin-right:250px"><a style="color:white"> <?php echo $sql[$i]['costo']  . "€" ;?> </a></div> 
+            <div id="element4" style="text-align:left; margin-left:150px" ><a style="color:black; background-color:white; border-radius:5px;"> <?php echo $sql[$i]['tipologia']?> </a></div> 
+            <div style="text-align:center"><a style="color:black; background-color:white; border-radius:5px;"><?php  echo $sql[$i]['orario_inizio'] . "-" . $sql[$i]['orario_fine'] ?> </a></div> 
+            <div id="element5" style="text-align:right; margin-right:200px;"><a style="color:black; background-color:white; border-radius:5px;"> <?php echo $sql[$i]['costo']  . "€" ;?> </a></div> 
             </div>
             
         <?php } ?>

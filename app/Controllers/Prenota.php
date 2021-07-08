@@ -133,7 +133,7 @@ class Prenota extends BaseController {
                 $questionario = '';
 
                 if(isset($_FILES['questionario']['size']) && $_FILES['questionario']['size'] > 0) {
-                    $uploadDir = 'C:/Sviluppo SW/Xampp/htdocs/CodeIgniter/app/Views/questionari/questionari_compilati/';
+                    $uploadDir = 'C:/xampp/htdocs/sito-web/app/Views/pages/questionari/questionari_compilati';
                     $questionario = basename($_FILES['questionario']['name']);
                     $uploadedFile = $uploadDir . $questionario;
                     

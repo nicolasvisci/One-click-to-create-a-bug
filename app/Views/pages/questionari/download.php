@@ -85,7 +85,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <h1><span class="w3-margin w3-jumbo Title">SCARICA IL QUESTIONARIO D'ANAMNESI</span></h1>
 </header>
 <center>
-<button class="btn" onclick="window.open('//www.aslal.it/allegati/SCHEDA%20ANAMNESTICA.pdf','_blank')" ><i class="fa fa-download"></i> DOWNLOAD</button>
+<button type="submit" class="btn"><a href="/questionario_anamnesi.pdf" download="questionario_anamnesi.pdf" ><i class="fa fa-download"></i> DOWNLOAD</a></button>
 </center>
 </body>
 </html>
+

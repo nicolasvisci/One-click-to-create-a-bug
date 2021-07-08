@@ -44,6 +44,12 @@ div.book-options {
     
 }
 
+.orange-text {
+    color: orange;
+    font-weight: bold;
+    
+}
+
 .btn {
   background-color: orange;
   border: none;
@@ -78,9 +84,12 @@ div.book-options {
 
     <center>
     <h1 class="white-text" style="font-size:50px"><span> <?php echo $nome_lab?></span></h1>
-    <h5 class="white-text"> email: <?php echo $email?></h5>
-    <h5 class="white-text"> numero di telefono: <?php echo $numero_telefono?></h5>
-    <br> <br>
+    <h5 class="white-text"> Email: </h5><h5 class="orange-text"><?php echo $email?></h5>
+    <h5 class="white-text"> Numero di telefono: </h5><h5 class="orange-text"><?php echo $numero_telefono?></h5>
+    <br>
+    <h4 class="white-text"> Scarica questionario anamnesi: <button type="submit" name="notifiche" class="material-icons"><a class="icons" style="font-size: 30px; text-decoration: none; position:relative; top:8px;" href="/questionario_anamnesi.pdf" download="questionario_anamnesi.pdf">file_download</a></button></h4>
+    <br>
+    <hr>
     <h2 class="white-text"><span> Test disponibili </span></h2>
     </center>
 

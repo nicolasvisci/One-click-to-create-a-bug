@@ -120,7 +120,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
 
     <div class="w3-twothird">
-      <h1 class="w3-text-black">Quando fare il test molecolare</h1>
+      <h1 class="w3-text-white">Quando fare il test molecolare</h1>
       <ul>
         <h4 class="w3-padding-32">Su richiesta della Asl: 
         <li>se si è contatti stretti di una persona a cui è stata confermata l’infezione, al decimo giorno dall’ultimo contatto</li>  
@@ -142,7 +142,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
 
     <div class="w3-twothird">
-      <h1 class="w3-text-black">Quando non fare il test molecolare</h1>
+      <h1 class="w3-text-white">Quando non fare il test molecolare</h1>
         <h4 class="w3-padding-32">Non è raccomandato prescrivere test diagnostici a persone che sono state a contatto con contatti stretti di un caso confermato. Esse non devono, inoltre, essere considerate sospette né essere sottoposte ad alcuna misura di quarantena.</h5>
     </div>
   </div>

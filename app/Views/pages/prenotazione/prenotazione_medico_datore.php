@@ -44,6 +44,12 @@ div.book-options {
 
 }
 
+.orange-text {
+    color: orange;
+    font-weight: bold;
+    
+}
+
 .btn {
   background-color: orange;
   border: none;
@@ -77,8 +83,8 @@ div.book-options {
 <div class="book-form">
     <center>
     <h1 class="white-text" style="font-size:50px"><span> <?php echo $nome_lab?></span></h1>
-    <h5 class="white-text"> email: <?php echo $email?></h5>
-    <h5 class="white-text"> numero di telefono: <?php echo $numero_telefono?></h5>
+    <h5 class="white-text"> Email: </h5><h5 class="orange-text"><?php echo $email?></h5>
+    <h5 class="white-text"> Numero di telefono: </h5><h5 class="orange-text"><?php echo $numero_telefono?></h5>
     <br> <br>
     <h2 class="white-text"><span> Test disponibili </span></h2>
     </center>

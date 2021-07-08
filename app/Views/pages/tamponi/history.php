@@ -77,15 +77,7 @@ h3.titolo {
         <h3 class="titolo" style="margin-left: 60px;"><span> DATA</span></h3>
         <h3 class="titolo" style="margin-left: 60px;"><span> ORARIO</span></h3>
         <h3 class="titolo" style="margin-left: 60px;"><span> COSTO</span></h3>
-        <h3 class="titolo" style="margin-left: 80px;"><span>
-        <?php 
-            if ($_SESSION['tipo_utente'] == 'CI') {
-
-            } else {
-                echo "N° PRENOTATI";
-            }
-        ?>
-        </span></h3>
+        <h3 class="titolo" style="margin-left: 80px;"><span> N° PRENOTATI</span></h3>
         <?php 
 
         for ($i = 0; $i < $tuples; $i++) {

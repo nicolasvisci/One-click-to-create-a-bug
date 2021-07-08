@@ -45,6 +45,12 @@ span:hover {
 
 }
 
+.orange-text {
+    color: orange;
+    font-weight: bold;
+    
+}
+
 </style>
 
 <?php 
@@ -62,8 +68,8 @@ span:hover {
 <form class="book-form" method='post' enctype="multipart/form-data">
     <center>
     <h1 class="white-text"><span> <?php echo strtoupper($tipologia)?></span></h1>
-    <h4 class="white-text">Orario disponibile: <?php echo $orario_inizio . "-" . $orario_fine ?></h4>
-    <h4 class="white-text">Costo: <?php echo $costo . "€"?></h4>
+    <h4 class="white-text">Orario disponibile: </h5><h5 class="orange-text"><?php echo $orario_inizio . "-" . $orario_fine ?></h4>
+    <h4 class="white-text">Costo: </h5><h5 class="orange-text"><?php echo $costo . "€"?></h4>
     <br><hr>
     <h4 class="white-text">Data: <input type="date" name="data_prenotazione" >
     <br> Ora: <input name="hh" class="set_tamp" type="number" min="0" max="23" placeholder="23">:<input name="mm" class="set_tamp" type="number" min="0" max="59" placeholder="00"></h4>
