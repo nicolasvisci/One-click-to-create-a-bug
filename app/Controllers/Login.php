@@ -124,31 +124,79 @@ class Login extends BaseController {
 
     public function forgot_password(){
         helper('form');
+        helper('url');
+        helper('text');
+        $db = \Config\Database::connect();
+        $email = \Config\Services::email();
+        $session = session();
         $model = new UtentiModel();
-        $email = $this->request->getVar('email', FILTER_SANITIZE_STRING);
-        $data = $model->where('email', $email)->first();
-            
-                $to = $email;
-                $subject = 'Reset Password Link';
-                $token = $this->request->getVar('id');
-                $message = 
-                            'Your reset password request has been received. Please click'
-                            . 'the below link to reset your password.<br><br>'
-                            . '<a href="'. base_url().'/login/reset_password/'.$token.'">Click here to Reset Password</a><br><br>';
-                $email = \Config\Services::email();
-                $email->setTo($to);
-                $email->setFrom('massaromatteo21@gmail.com','Tamp');
-                $email->setSubject($subject);
-                $email->setMessage($message);
-                    if($email->send())
-                        {
-                            //session()->setTempdata('success','Reset password link sent to your registred email. Please verify with in 15mins',3);
-                            return redirect()->to('/home');
-                        }
-                    else{
-                            return redirect()->to('/login');
-                        }
-            
         
+        $to_email = $this->request->getVar('email');
+        $row = $model->where('email', $to_email)->first();
+        if($row){  
+
+            $sql = "UPDATE utenti SET id = ? WHERE email = ?";
+            $randomid = random_string('num', 30);
+            $db->query($sql, [$randomid, $to_email]);
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'sardonmichel1@gmail.com', 
+                'smtp_pass' => 'lollero24.', 
+                'mailtype' => 'html',
+                'charset' => 'UTF-8',
+                'wordwrap' => TRUE
+              );
+            $email->initialize($config);
+            
+            $email->setTo($to_email);
+            $email->setSubject('Reset della Password');
+            $email->setMessage('Il tuo codice per resettare la password: <b>'.$randomid.'</b> <br>
+            Clicca sul link per cambiare la password. <br> <a href=http://localhost/cambiaPassword/> CLICK </a>');
+            $email->send();
+            echo 'Email Inviata!';
+            return redirect()->to('/recuperaPassword');
         }
+        else{
+            $data = $email->printDebugger(['headers']);
+            print_r($data);
+            return redirect()->to('/login');
+        }
+    }
+    public function change_password(){
+        helper('form');
+        helper('url');
+
+        $db = \Config\Database::connect();
+        $session = session();
+        $model = new UtentiModel();
+
+        $codice = $this->request->getVar('id');
+        $password = $this->request->getVar('password');
+        $data = $model->where('id', $codice)->first();
+        
+        if($this->request->getMethod() === 'post' && $this->validate([
+
+            'password' => 'required|min_length[8]',
+            'confpsw' => 'matches[password]',
+            'id' => 'required|min_length[10]|max_length[10]'
+
+        ])){
+
+            if($data){
+                $sql = "UPDATE utenti SET password = ? WHERE id = ?";
+                $db->query($sql, [password_hash($password, PASSWORD_DEFAULT), $this->request->getVar('id')]);
+                return redirect()->to('/login');
+            }
+            else{
+                $session->setFlashdata('msg', 'Email non trovata!');
+                return redirect()->to(base_url());
+            }
+        }
+        else{
+            $session->setFlashdata('msg', 'Dati inseriti non corretti');
+            return redirect()->to('/login');
+        }
+    }
 }

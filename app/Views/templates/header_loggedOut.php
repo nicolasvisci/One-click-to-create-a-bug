@@ -34,7 +34,7 @@ header {
 }
 
 a.btn_text:hover {
-    color: rgb(0, 255, 115);
+    color: orange;
 }
 
 main {
@@ -54,7 +54,7 @@ main {
 
 .scegli {
     display: block;
-    background-color: #39b32e;
+    background-color: orange;
     border-radius: 5px;
     border: none;
     color: white;

@@ -15,7 +15,6 @@ class Laboratori extends BaseController {
         $model = new LaboratoriModel();
         $model2 = new UtentiModel();
         $model3 = new PosizioneModel();
-        $model4 = new TamponiModel();
 
         if ($this->request->getMethod() === 'post' && $this->validate([
             'nome_lab' => 'required|max_length[40]',
@@ -40,10 +39,6 @@ class Laboratori extends BaseController {
             $model3->save([
                 'lat' => 41.107813 - mt_rand(0.1, 1) * 0.1,
                 'lng' => 16.866235 - mt_rand(-1, 1) * 0.1,
-                'email' => strtolower($this->request->getVar('email'))
-            ]);
-
-            $model4->save([
                 'email' => strtolower($this->request->getVar('email'))
             ]);
     

@@ -58,6 +58,11 @@ class Dashboard extends BaseController {
         echo view('pages/login/recupera_password');
     }
 
+    public function cambiaPassword() {
+        echo view('templates/header_loggedOut');
+        echo view('pages/login/cambia_password');
+    }
+
     public function profile() {
         $session = session();
 
@@ -98,7 +103,7 @@ class Dashboard extends BaseController {
     public function guidaLoggedIn() {
 
         echo view('templates/header_loggedIn');
-        echo view('pages/guida/guida_loggedIn');
+        echo view('pages/guida/guida');
         echo view('templates/footer_loggedIn_users');
     }
 

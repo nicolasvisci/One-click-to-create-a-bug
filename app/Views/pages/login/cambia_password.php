@@ -28,14 +28,14 @@ span:hover {
 </style>
 
     <main>
-            <form class="compile-form" action="dashboard5" method='post'>
+            <form class="compile-form" action="dashboard3" method='post'>
             <div>
             
-            <h1><span> RECUPERA PASSWORD </span></h1> 
-
-            </div>
+            <h1><span> CAMBIA PASSWORD </span></h1> </div>
            
-                <input type required="text" name="email" placeholder="Email">
+                <input type required="text" name="id" placeholder="Codice">
+                <input type required="text" name="password" placeholder="Nuova Password">
+                <input type required="text" name="confpsw" placeholder="Conferma Nuova Password">
                 <button type="submit" name="submit" class="regLog_btn" ><a class="regLog_text">Invia</a></button>
 
         </main>
