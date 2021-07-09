@@ -85,12 +85,12 @@
 
     function set_risultato(id){
         $.ajax({
-            url: "/annulla_prenotazione",
+            url: "/get_risultato",
             type: "POST",
             data: {id},
             dataType: "json",
             success: function(){
-                window.location.href = "/history";
+                window.location.href = "/set_risultato";
             }
         })
     }
