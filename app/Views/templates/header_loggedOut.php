@@ -24,6 +24,7 @@ header {
     font-family: "montferrat";
     padding: 10px;
     position: relative;
+    margin-left: 10px;
     display: inline-block;
 }
 
