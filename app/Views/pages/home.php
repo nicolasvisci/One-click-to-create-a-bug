@@ -35,27 +35,26 @@ line-height: 1;
 text-align: center; 
 }
 
-.fa-calendar-alt:hover {
+.fa-clipboard-list:hover {
     color: white;
 }
 
-.fa-calendar-alt{
-  padding-left: 680px;
-}
 
 </style>
 
 <body>
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <a class="Title" >
 <br>
 <br>
 <br>
 <br>
- <h1> <span class="Title"> ONE CLICK TO CREATE A BUG</span></h1>
- <h2> <span class="Title"> Servizio prenotazione tamponi</span></h2>
+ <h1> <span> ONE CLICK TO CREATE A BUG</span></h1>
+ <h2> <span> Servizio prenotazione tamponi</span></h2>
  <br>
- <i class="fa fa-calendar-alt" style='font-size:200px'></i>
+ <center>
+ <i class="fad fa-clipboard-list" style='font-size:200px'></i>
+ </center>
 </a>
 </body>
 

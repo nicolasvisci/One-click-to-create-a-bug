@@ -29,11 +29,8 @@ span:hover {
 
     <main>
             <form class="compile-form" action="dashboard5" method='post'>
-            <div>
             
             <h1><span> RECUPERA PASSWORD </span></h1> 
-
-            </div>
            
                 <input type required="text" name="email" placeholder="Email">
                 <button type="submit" name="submit" class="regLog_btn" ><a class="regLog_text">Invia</a></button>

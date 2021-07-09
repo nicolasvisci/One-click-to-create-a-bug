@@ -47,6 +47,14 @@ p {
     text-align: center;
 }
 
+body,h1,h2,h3,h4,h5,h6 {
+  font-family: "Lato", sans-serif
+}
+
+.w3-bar,h1,button {
+  font-family: "Montserrat", sans-serif
+}
+
 </style>
 
 <title>Guida Tamponi</title>
@@ -55,12 +63,7 @@ p {
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-info,.fa-coffee {font-size:200px}
-</style>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script><link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <body>
 
 <!-- Header -->

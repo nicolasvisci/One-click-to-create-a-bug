@@ -29,9 +29,8 @@ span:hover {
 
     <main>
             <form class="compile-form" action="dashboard3" method='post'>
-            <div>
             
-            <h1><span> CAMBIA PASSWORD </span></h1> </div>
+            <h1><span> CAMBIA PASSWORD </span></h1>
            
                 <input type required="text" name="id" placeholder="Codice">
                 <input type required="text" name="password" placeholder="Nuova Password">
