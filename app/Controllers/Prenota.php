@@ -109,7 +109,7 @@ class Prenota extends BaseController {
 
             {
                 $sql = $db->query("INSERT INTO prenotazioni VALUES ('" . $email_lab . "', '" . $email . "', '" . 
-                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ", '');");
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ", NULL, '');");
 
                 unset($_SESSION['email_lab']);
                 unset($_SESSION['id']);
@@ -154,7 +154,7 @@ class Prenota extends BaseController {
                 }
                 
                 $sql = $db->query("INSERT INTO prenotazioni VALUES ('" . $email_lab . "', '" . $email . "', '" . 
-                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1, '" . $db->escapeString($questionario) . "');");
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1, NULL, '" . $db->escapeString($questionario) . "');");
 
                 unset($_SESSION['email_lab']);
                 unset($_SESSION['id']);

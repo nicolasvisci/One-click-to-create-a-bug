@@ -79,21 +79,6 @@ h2.home {
     text-shadow: 0 0 5px #fff, 0 0 5px #fff;
 }
 
-span {
-    transition: background-size .5s, background-position .3s ease-in .5s;
-    background-image: linear-gradient(#ff0000, #ff2200, #ff4400, #ff6600, #ff8800, #ffaa00, #ffcc00, #ffff00);
-    background-repeat: no-repeat;
-    background-position: 0% 100%;
-    background-size: 100% 0px;
-    border-radius: 10px 10px 10px 10px;
-}
-
-span:hover {
-    transition: background-position .5s, background-size .3s ease-in .5s;
-    background-size: 100% 100%;
-    background-position: 0% 0%;
-}
-
 .modify-form {
     background-color: #222;
     padding: 20px 20px;
@@ -208,15 +193,20 @@ div.input-form {
 }
 
 h1.titolo  {
-    display:inline;
-    color:white; 
-    font-weight:bold;
+    display: inline;
+    color: white; 
+    font-weight: bold;
 }
 
 h3.titolo {
-    display:inline;
-    color:white; 
-    font-weight:bold;
+    display: inline;
+    color: white; 
+    font-weight: bold;
+}
+
+h3.attributo {
+    color: white;
+    font-weight: bold;
 }
 
 .row div{
@@ -267,11 +257,12 @@ div.book-options {
 }
 
 .material-icons {
-    color: white;
+    color: rgb(51, 121, 181);
 }    
 
 .material-icons:hover{
-    color:#ffa900;
+    color: rgb(40, 90, 140);
+    text-decoration: underline;
 }
 
 .icons {

@@ -58,6 +58,12 @@ $routes->match(['get', 'post'], 'conferma_prenotazione', 'Prenota::conferma_pren
 $routes->post('annulla_prenotazione', 'History::annulla_prenotazione');
 $routes->get('modificaTamp', 'Dashboard::modificaTamp');
 $routes->post('aggiungi_test', "Laboratori::aggiungi_test");
+$routes->get('calendario', 'Dashboard::calendario');
+$routes->post('getDate', 'History::get_date');
+$routes->get('history_lab', 'History::history_lab');
+$routes->post('get_info', 'History::get_info');
+$routes->get('mostra_info', 'History::mostra_info');
+$routes->post('torna_indietro', 'History::torna_indietro');
 $routes->get('/', 'Pages::index');
 $routes->get('(:any)', 'Pages::view/$1');
 
