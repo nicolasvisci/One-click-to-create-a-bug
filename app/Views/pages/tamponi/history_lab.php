@@ -102,8 +102,6 @@ h3.titolo {
 
             <?php 
 
-                $time = 25200;
-
                 echo "<button type='submit' name='get_info' style='margin-left:275px' class='material-icons' id='" . $i . "' onclick='get_info(this.id)'> 
                 <a class='icons' style='font-size: 50px; color:rgb(185, 185, 185); line-height: 70px;'> 
                 info 
@@ -117,7 +115,7 @@ h3.titolo {
                     </a> 
                     </button>";
                 }
-                else if (strtotime('now') + $time> strtotime($data . " " . $sql[$i]['orario']) && $sql[$i]['numero_positivi'] == 0) {
+                else if (strtotime('now')> strtotime($data . " " . $sql[$i]['orario']) && $sql[$i]['numero_positivi'] == 0) {
                     echo "<button type='submit' name='set_risultato' style='margin-left:30px' class='material-icons' id='" . $i . "' onclick='set_risultato(this.id)'> 
                     <a class='icons' style='font-size: 50px; color:rgb(100, 185, 20); line-height: 70px;'> 
                     rule
