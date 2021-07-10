@@ -24,6 +24,7 @@ font-weight: bold;
 letter-spacing: -1px;
 line-height: 1;
 text-align: center;
+border: 0px;
 }
 
 .history-form {
@@ -92,7 +93,7 @@ h3.attributo {
                   <h3 class='attributo'>Data di Nascita: </h3><h3 class='orange-text'>" . $data_nascita . "</h3><br>
                   <h3 class='attributo'>Codice Fiscale: </h3><h3 class='orange-text'>" . $codice_fiscale . "</h3><br>
                   <h3 class='attributo'>Email: </h3><h3 class='orange-text'>" . $email . "</h3><br>
-                  <h3 class='attributo'>Numero Prenotati: </h3><h3 class='orange-text'>" . $numero_prenotati . "</h3>
+                  <h3 class='attributo'>Numero Prenotati: </h3><h3 class='orange-text'>" . $numero_prenotati . "</h3></br>
                   <br>
                   <br>
                   <button type='submit' class='material-icons' onclick='torna_indietro()'><a class='icons' style='font-size: 50px;'>arrow_back</a></button>";

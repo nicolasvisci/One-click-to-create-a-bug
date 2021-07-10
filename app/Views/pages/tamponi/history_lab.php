@@ -24,6 +24,7 @@ font-weight: bold;
 letter-spacing: -1px;
 line-height: 1;
 text-align: center;
+border: 0px;
 }
 
 .history-form {
@@ -80,7 +81,7 @@ h3.titolo {
 ?>
 
 <div class="history-form" >
-    <h1 class="white-text" style="text-align: center"><span>Prenotazioni</span></h1>
+    <h1 style="text-align: center"><span>PRENOTAZIONI</span></h1>
     <hr>
     <center>
     <h3 class="titolo" style="margin-left: 30px;"> DATA: </h3><h3 class="orange-text"><?php echo $_SESSION['date']?></h3>

@@ -37,14 +37,14 @@ text-align: center;
  
         <main>
             <form class="profile-form">
-                <h1><span class="Title"> Profilo </span></h1>
+                <h1><span class="Title"> PROFILO </span></h1>
                 <p> <?php echo $_SESSION['nome_lab']?>
                 <p> <?php echo $_SESSION['email']?> </p>
                 <p> <?php echo $_SESSION['numero_telefono']?> </p>
             </form>
 
             <form class="modify-form" method="post">
-                <h1><span class="Title"> Modifica Profilo </span></h1>
+                <h1><span class="Title"> MODIFICA PROFILO </span></h1>
                 <input type="text" class='agg_input' name="nome_LAB" placeholder="Nome Laboratorio">
                 <input type="text" class='agg_input' name="email" placeholder="Email">
                 <input type="number" class='agg_input' name="numero_telefono" placeholder="Numero di telefono">

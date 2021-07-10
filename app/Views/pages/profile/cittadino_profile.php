@@ -37,7 +37,7 @@ text-align: center;
        
        <main>
             <form class="profile-form">
-                <h1><span class="Title"> Profilo </span></h1>
+                <h1><span class="Title"> PROFILO </span></h1>
                 <p> <?php echo $_SESSION['nome']?> </p>
                 <p> <?php echo $_SESSION['cognome']?> </p>
                 <p> <?php echo $_SESSION['data_nascita']?> </p>
@@ -46,7 +46,7 @@ text-align: center;
             </form>
 
             <form class="modify-form" method="post">
-                <h1><span class="Title"> Modifica Profilo </span></h1>
+                <h1><span class="Title"> MODIFICA PROFILO </span></h1>
                 <input type="text" class='agg_input' name="nome" placeholder="Nome">
                 <input type="text" class='agg_input' name="cognome" placeholder="Cognome">
                 <input type="date" class='agg_input' name="data_nascita">
