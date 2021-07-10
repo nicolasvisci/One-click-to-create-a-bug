@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <style>
+
 span {
   transition: background-size .5s, background-position .3s ease-in .5s;
 }
@@ -19,7 +20,6 @@ span:hover {
   background-position: 0% 0%;
 }
 
-
 h2 { color: white;
 font-family: 'Helvetica Neue', sans-serif; 
 font-size: 40px; 
@@ -32,7 +32,7 @@ text-align: center;
 </style>
 <head>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/bootstrap/main.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -50,10 +50,47 @@ text-align: center;
 </div>
    
 <script>
-  var site_url = "<?= site_url() ?>";
+    var site_url = "<?= site_url() ?>";
+
+    $(document).ready(function() {
+
+        var calendar = $('#calendar').fullCalendar({
+            
+            displayEventTime: false,
+            header:{
+                left:'prev,next today',
+                center:'title',
+                right:'month,agendaWeek,agendaDay'
+            },
+            selectHelper: true,
+
+            dayClick: function(event) {
+                var date = convert(event['_d']);
+                $.ajax({
+                    url:"/getDate",
+                    type: 'POST',
+                    data: {date},
+                    dataType: "json",
+                    success: function(res){
+                        window.location.href = "/history_lab";
+                    }
+        })
+                console.log(convert(event['_d']));
+                //window.location.href = "/calendario";
+            }
+        });
+    });
+
+    function convert(str) {
+        var date = new Date(str);
+        month = ("0" + (date.getMonth() + 1)).slice(-2);
+        day = ("0" + date.getDate()).slice(-2);
+        return [date.getFullYear(), month, day].join("-");
+    }   
+
 </script>
 
-<?= script_tag('script.js') ?>
+
 
 </body>
 </html>

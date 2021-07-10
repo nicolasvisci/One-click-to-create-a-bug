@@ -146,6 +146,12 @@ class Dashboard extends BaseController {
         echo view('templates/footer_loggedIn_users');
     }
 
+    public function calendario() {
+        echo view('templates/header_loggedIn_LAB');
+        echo view('pages/tamponi/calendario');
+        echo view('templates/footer_loggedIn_LAB');
+    }
+
     
 
 }
