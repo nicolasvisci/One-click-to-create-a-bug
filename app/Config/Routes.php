@@ -45,7 +45,7 @@ $routes->match(['get', 'post'], 'cambiaPassword', 'Dashboard::cambiaPassword');
 $routes->get('home', 'Dashboard::home');
 $routes->get('signupChoice', 'Dashboard::scegliRegistrazione');
 $routes->get('login', 'Dashboard::login');
-$routes->get('recuperaPassword', 'Dashboard::recuperaPassword');
+$routes->get('recuperaPassword', 'Dashboard::reimpostaPassword');
 $routes->post('dashboard3', 'Login::change_password');
 $routes->post('dashboard5', 'Login::forgot_password');
 $routes->get('logout', 'Dashboard::logout');

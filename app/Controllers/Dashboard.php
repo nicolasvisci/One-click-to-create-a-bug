@@ -52,10 +52,10 @@ class Dashboard extends BaseController {
         echo view('pages/login/login');
     }
 
-    public function recuperaPassword() {
+    public function reimpostaPassword() {
 
         echo view('templates/header_loggedOut');
-        echo view('pages/login/recupera_password');
+        echo view('pages/login/reimposta_password');
     }
 
     public function cambiaPassword() {

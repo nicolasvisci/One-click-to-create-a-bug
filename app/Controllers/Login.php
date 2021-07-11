@@ -142,8 +142,8 @@ class Login extends BaseController {
                 'protocol' => 'smtp',
                 'smtp_host' => 'smtp.googlemail.com',
                 'smtp_port' => 465,
-                'smtp_user' => 'sardonmichel1@gmail.com', 
-                'smtp_pass' => 'lollero24.', 
+                'smtp_user' => 'servizioprenotazionetamponi@gmail.com', 
+                'smtp_pass' => 'Prenotazioni1234', 
                 'mailtype' => 'html',
                 'charset' => 'UTF-8',
                 'wordwrap' => TRUE

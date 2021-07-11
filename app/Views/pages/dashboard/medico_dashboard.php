@@ -44,6 +44,6 @@ text-align: center;
 <br>
 <br>
 <h1> <span class="Title">Dott./Dott.ssa<output color="white"> <?php echo $_SESSION['cognome']?></output></span></h1>
-<h2> <span class="Title"> Medico</span></h2>
+<h2> <span class="Title"> Medico di base</span></h2>
 </a>
 </main>

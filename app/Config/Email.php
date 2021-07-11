@@ -9,12 +9,12 @@ class Email extends BaseConfig
 	/**
 	 * @var string
 	 */
-	public $fromEmail = 'sardonmichel1@gmail.com';
+	public $fromEmail = 'servizioprenotazionetamponi@gmail.com';
 
 	/**
 	 * @var string
 	 */
-	public $fromName = 'Michele Sardone';
+	public $fromName = 'Servizio Prenotazione Tamponi';
 
 	/**
 	 * @var string
@@ -54,14 +54,14 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $SMTPUser = 'sardonmichel1@gmail.com';
+	public $SMTPUser = 'servizioprenotazionetamponi@gmail.com';
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var string
 	 */
-	public $SMTPPass = 'lollero24.';
+	public $SMTPPass = 'Prenotazioni1234';
 
 	/**
 	 * SMTP Port
