@@ -33,7 +33,7 @@ header {
     background-color: #222;
     padding: 40px 20px;
     margin: 40px;
-    margin-left: 100px; 
+    margin-left: 130px; 
     width: 400px;
     border-radius: 10px;
     position: relative;
