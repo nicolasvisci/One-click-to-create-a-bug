@@ -111,6 +111,12 @@ class Prenota extends BaseController {
                 $sql = $db->query("INSERT INTO prenotazioni VALUES ('" . $email_lab . "', '" . $email . "', '" . 
                                    $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ", NULL, '');");
 
+                $sql = $db->query("INSERT INTO notifiche VALUES (1, '" . $email_lab . "', '" . $email . "', '" . 
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ", 'UTENTE', CURRENT_TIMESTAMP());");
+                
+                $sql = $db->query("INSERT INTO notifiche VALUES (1, '" . $email_lab . "', '" . $email . "', '" . 
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ", 'LAB', CURRENT_TIMESTAMP());");
+
                 unset($_SESSION['email_lab']);
                 unset($_SESSION['id']);
                 unset($_SESSION['prenotazione']);
@@ -133,7 +139,7 @@ class Prenota extends BaseController {
                 $questionario = '';
 
                 if(isset($_FILES['questionario']['size']) && $_FILES['questionario']['size'] > 0) {
-                    $uploadDir = 'C:/Sviluppo SW/Xampp/htdocs/CodeIgniter/app/Views/questionari/questionari_compilati/';
+                    $uploadDir = 'C:/Sviluppo SW/Xampp/htdocs/CodeIgniter/public/questionari_compilati/';
                     $questionario = basename($_FILES['questionario']['name']);
                     $uploadedFile = $uploadDir . $questionario;
                     
@@ -155,6 +161,12 @@ class Prenota extends BaseController {
                 
                 $sql = $db->query("INSERT INTO prenotazioni VALUES ('" . $email_lab . "', '" . $email . "', '" . 
                                    $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1, NULL, '" . $db->escapeString($questionario) . "');");
+
+                $sql = $db->query("INSERT INTO notifiche VALUES (1, '" . $email_lab . "', '" . $email . "', '" . 
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1, 'UTENTE', CURRENT_TIMESTAMP());");
+
+                $sql = $db->query("INSERT INTO notifiche VALUES (1, '" . $email_lab . "', '" . $email . "', '" . 
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1, 'LAB', CURRENT_TIMESTAMP());");
 
                 unset($_SESSION['email_lab']);
                 unset($_SESSION['id']);

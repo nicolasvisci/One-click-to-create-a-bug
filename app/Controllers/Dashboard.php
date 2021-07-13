@@ -86,6 +86,25 @@ class Dashboard extends BaseController {
         echo view('pages/homepage/login');
     }
 
+    public function visualizza_notifiche() {
+        $session = session();
+
+        switch ($session->get('tipo_utente')) {
+
+            case "LA":
+                echo view('templates/header_loggedIn');
+                echo view('pages/notifiche/visualizza_notifiche_lab');
+                echo view('templates/footer_loggedIn_LAB');
+                break;
+
+            default:
+                echo view('templates/header_loggedIn');
+                echo view('pages/notifiche/visualizza_notifiche_utenti');
+                echo view('templates/footer_loggedIn_users');
+                break;
+        }
+    }
+
     public function profile() {
         $session = session();
 

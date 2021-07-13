@@ -56,9 +56,7 @@ text-align: center;
                     success: function(res){
                         window.location.href = "/history_lab";
                     }
-        })
-                console.log(convert(event['_d']));
-                //window.location.href = "/calendario";
+                })
             }
         });
     });

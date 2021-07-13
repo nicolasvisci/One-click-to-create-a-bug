@@ -4,7 +4,7 @@
     <?php 
         $db = \Config\Database::connect();
 
-        $sql = $db->query("SELECT nome_lab, tipologia_test, data, orario, costo*numero_prenotati AS costo_totale, numero_prenotati FROM laboratori, test, prenotazioni WHERE prenotazioni.email_lab = test.email AND test.email = laboratori.email AND prenotazioni.email_utente = '" . $_SESSION['email'] . "' AND tipologia_test = tipologia ORDER BY data DESC, orario DESC;")->getResultArray();
+        $sql = $db->query("SELECT nome_lab, tipologia_test, data, orario, costo*numero_prenotati AS costo_totale, numero_prenotati, numero_positivi FROM laboratori, test, prenotazioni WHERE prenotazioni.email_lab = test.email AND test.email = laboratori.email AND prenotazioni.email_utente = '" . $_SESSION['email'] . "' AND tipologia_test = tipologia ORDER BY data DESC, orario DESC;")->getResultArray();
         $tuples = count($sql);
 
         ?>
@@ -31,14 +31,30 @@
             <div style="margin-left: 26px; width: 110px;"> <?php echo $sql[$i]['costo_totale'] . "€"?> </div> <?php if($sql[$i]['numero_prenotati'] > 1) { echo "<div style='margin-left: 60px;'>"; echo $sql[$i]['numero_prenotati']; echo "</div>";}?> 
             <?php if(strtotime('now') < strtotime($sql[$i]['data']) - 86400 || (strtotime('now') < strtotime($sql[$i]['data']) && strtotime('now') < strtotime($sql[$i]['orario']))) {
                       echo "<button type='submit' name='annulla_prenotazione'";
+
                       if($sql[$i]['numero_prenotati'] == 1) {
                           echo "style='margin-left:240px' ";
                       }
+
                       echo " class='material-icons' id='" . $i . "' onclick='annulla_prenotazione(this.id)'> 
                       <a class='icons' style='font-size: 29px; color:rgb(255, 40, 20); line-height: 70px;'> 
                       cancel 
                       </a> 
                       </button>";
+
+                  } else if($sql[$i]['numero_positivi'] !== NULL) {
+                        echo "<button type='submit' name='mostra_risultato'";
+                        session();
+
+                        if($sql[$i]['numero_prenotati'] == 1) {
+                            echo "style='margin-left:240px' ";
+                        }
+
+                        echo " class='material-icons' id='" . $i . "' onclick='mostra_risultato(this.id)'> 
+                        <a class='icons' style='font-size: 29px; color:rgb(185, 185, 185); line-height: 70px;'> 
+                        info
+                        </a> 
+                        </button>";
                   } ?> </div>
             <div style="clear:both;"></div>
             
@@ -54,6 +70,18 @@
             dataType: "json",
             success: function(){
                 window.location.href = "/history";
+            }
+        })
+    }
+
+    function mostra_risultato(id) {
+        $.ajax({
+            url: "/get_risultato_utente",
+            type: "POST",
+            data: {id},
+            dataType: "json",
+            success: function(){
+                window.location.href = "/mostra_risultato";
             }
         })
     }

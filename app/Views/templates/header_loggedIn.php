@@ -145,6 +145,16 @@ button {
     color: #fff
 }
 
+.notifications-form {
+    background-color: #222;
+    padding: 40px 20px;
+    margin: 100px;
+    margin-left: 190px; 
+    width: 1160px;
+    border-radius: 10px;
+    position: relative;
+}
+
 form.tamp-form {
     background-color: #222;
     padding: 40px 20px;
@@ -235,7 +245,6 @@ div.book-options {
     width: 170px;
     height: 100px;
     margin-left: 62px;
-  
     border-radius: 5px;
     text-align: center;
     background-color: #fff;
@@ -263,6 +272,20 @@ div.book-options {
 .material-icons:hover{
     color: rgb(40, 90, 140);
     text-decoration: underline;
+}
+
+.set_pos {
+    background-color: green;
+    position: relative;
+    padding: 9px 0px;
+    width: 15%;
+    margin-left: 160px;
+    margin-top: 50px;
+    text-align: center;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff
 }
 
 .icons {
@@ -316,7 +339,7 @@ div.book-options {
         <form>
             <button type="submit" name="home" class="material-icons" id="home" formaction="home"><a class="icons">home</a></button>
             <button type="submit" name="info" class="material-icons" id="info" formaction="info"><a class="icons">info</a></button>
-            <button type="submit" name="notifiche" class="material-icons" id="notifiche" formaction="notifiche"><a class="icons">notifications_none</a></button>
+            <button type="submit" name="notifiche" class="material-icons" id="notifiche" formaction="visualizza_notifiche"><a class="icons">notifications_none</a></button>
             <button type="submit" name="person" class="material-icons" id="profile" formaction="profile"><a class="icons">person</a></button>
             <button type="submit" name="logout" class="material-icons" id="logout" formaction="logout"><a class="icons">logout</a></button>
         </form>
