@@ -118,4 +118,84 @@ class Login extends BaseController {
              return redirect()->to('/login');
         }
     }
+
+    public function forgot_password(){
+        helper('text');
+        $email = \Config\Services::email();
+        $session = session();
+
+        $model = new UtentiModel();
+        
+        $to_email = $this->request->getVar('email');
+        $row = $model->where('email', $to_email)->first();
+
+        if($row){  
+
+            $randomid = random_string('num', 30);
+            $_SESSION['id'] = $randomid;
+            $_SESSION['email'] = $to_email;
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'servizioprenotazionetamponi@gmail.com', 
+                'smtp_pass' => 'Prenotazioni1234', 
+                'mailtype' => 'html',
+                'charset' => 'UTF-8',
+                'wordwrap' => TRUE
+              );
+            $email->initialize($config);
+
+            $email->setTo($to_email);
+            $email->setSubject('Reset della Password');
+            $email->setMessage('Il tuo codice per resettare la password: <b>'.$randomid.'</b>');
+            $email->send();
+            echo 'Email Inviata!';
+            return redirect()->to('/cambiaPassword');
+
+        } else {
+
+            $data = $email->printDebugger(['headers']);
+            print_r($data);
+            return redirect()->to('/login');
+        }
+    }
+
+    public function change_password(){
+        helper('form');
+        helper('url');
+
+        $db = \Config\Database::connect();
+        $session = session();
+        $model = new UtentiModel();
+
+        $codice = $this->request->getVar('id');
+        $password = $this->request->getVar('password');
+        
+        if($this->request->getMethod() === 'post' && $this->validate([
+
+            'password' => 'required|min_length[8]',
+            'confpsw' => 'matches[password]',
+            'id' => 'required|min_length[10]|max_length[10]'
+
+        ])){
+
+            if($codice == $_SESSION['id']){
+                $sql = $db->query("UPDATE utenti SET password = '" . password_hash($password, PASSWORD_DEFAULT) . "' WHERE email = '" . $_SESSION['email'] . "';");
+                unset($_SESSION['id']);
+                unset($_SESSION['email']);
+                return redirect()->to('/login');
+            }
+
+            else{
+                $session->setFlashdata('msg', 'Email non trovata!');
+                return redirect()->to(base_url());
+            }
+        }
+
+        else{
+            $session->setFlashdata('msg', 'Dati inseriti non corretti');
+            return redirect()->to('/login');
+        }
+    }
 }

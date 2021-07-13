@@ -86,6 +86,16 @@ class Dashboard extends BaseController {
         echo view('pages/homepage/login');
     }
 
+    public function recuperaPassword() {
+        echo view('templates/header_loggedOut');
+        echo view('pages/homepage/recupera_password');
+    }
+
+    public function cambiaPassword() {
+        echo view('templates/header_loggedOut');
+        echo view('pages/homepage/cambia_password');
+    }
+
     public function visualizza_notifiche() {
         $session = session();
 
