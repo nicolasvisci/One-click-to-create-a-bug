@@ -87,10 +87,6 @@ border: 0px;
 
                 echo "Il " . $sql[$i]['tipologia_test'] . " effettuato il giorno " . $sql[$i]['data'] . " alle ore " . substr($sql[$i]['orario'], 0, 5) . " presso il laboratorio " . $sql[$i]['nome_lab'] . " ha dato come esito: POSITIVO " ;
 
-                if($sql[$i]['numero_prenotati'] > 1) {
-                    echo "per " . $sql[$i]['numero_prenotati'] . " persone ";
-                }
-
             } else if ($sql[$i]['id'] == 5) {
 
                 echo "Il " . $sql[$i]['tipologia_test'] . " effettuato il giorno " . $sql[$i]['data'] . " alle ore " . substr($sql[$i]['orario'], 0, 5) . " presso il laboratorio " . $sql[$i]['nome_lab'] . " ha dato come esito: NEGATIVO " ;
