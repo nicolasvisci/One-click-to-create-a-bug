@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 
 <html>
     <head>
@@ -118,11 +127,12 @@ button {
 }
 
 .material-icons {
-    color: white;
+    color: rgb(51, 121, 181);
 }    
 
 .material-icons:hover{
-    color:#ffa900;
+    color: rgb(40, 90, 140);
+    text-decoration: underline;
 }
 
 .icons {
@@ -180,7 +190,7 @@ button {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <form>
             <button type="submit" name="home" class="material-icons" id="home" formaction="home"><a class="icons">home</a></button>
-            <button type="submit" name="notifiche" class="material-icons" id="notifiche" formaction="notifiche"><a class="icons">notifications_none</a></button>
+            <button type="submit" name="notifiche" class="material-icons" id="notifiche" formaction="visualizza_notifiche"><a class="icons">notifications_none</a></button>
             <button type="submit" name="person" class="material-icons" id="profile" formaction="profile"><a class="icons">person</a></button>
             <button type="submit" name="logout" class="material-icons" id="logout" formaction="logout"><a class="icons">logout</a></button>
         

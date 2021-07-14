@@ -67,8 +67,6 @@ h3.attributo {
 
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
 <div class="history-form" >
 <h1 class="white-text" style="text-align: center"><span>INFO</span></h1>
 <hr> 
@@ -93,10 +91,15 @@ h3.attributo {
                   <h3 class='attributo'>Data di Nascita: </h3><h3 class='orange-text'>" . $data_nascita . "</h3><br>
                   <h3 class='attributo'>Codice Fiscale: </h3><h3 class='orange-text'>" . $codice_fiscale . "</h3><br>
                   <h3 class='attributo'>Email: </h3><h3 class='orange-text'>" . $email . "</h3><br>
-                  <h3 class='attributo'>Numero Prenotati: </h3><h3 class='orange-text'>" . $numero_prenotati . "</h3></br>
-                  <br>
-                  <br>
-                  <button type='submit' class='material-icons' onclick='torna_indietro()'><a class='icons' style='font-size: 50px;'>arrow_back</a></button>";
+                  <h3 class='attributo'>Numero Prenotati: </h3><h3 class='orange-text'>" . $numero_prenotati . "</h3><br>";
+
+                  if($_SESSION['questionario_anamnesi'] != '') {
+                    echo "<h3 class='attributo'> Scarica questionario anamnesi: <button type='submit' name='download' class='material-icons'>
+                          <a class='icons' style='font-size: 50px; position: relative; top: 15px; text-decoration: none;' href='questionari_compilati/" . $_SESSION['questionario_anamnesi'] . "' download='questionario_anamnesi.pdf'>
+                          file_download</a></button></h3>
+                          <br><br>";
+                }
+                  echo "<button type='submit' class='material-icons' onclick='torna_indietro()'><a class='icons' style='font-size: 50px;'>arrow_back</a></button>";
             break;
 
         case "DA":
@@ -118,11 +121,15 @@ h3.attributo {
                   <h3 class='attributo'>Nome Azienda: </h3><h3 class='orange-text' >" . $nome_azienda . "</h3><br>
                   <h3 class='attributo'>Partita Iva: </h3><h3 class='orange-text' >" . $partita_iva . "</h3><br>
                   <h3 class='attributo'>Email: </h3><h3 class='orange-text' >" . $email . "</h3><br>
-                  <h3 class='attributo'>Numero Prenotati: </h3><h3 class='orange-text' >" . $numero_prenotati . "</h3>
-                  <br>
-                  <br>
-                  <button type='submit' class='material-icons' onclick='torna_indietro()'><a class='icons' style='font-size: 50px;'>arrow_back</a></button>";
-            
+                  <h3 class='attributo'>Numero Prenotati: </h3><h3 class='orange-text' >" . $numero_prenotati . "</h3><br>";
+
+                  if($_SESSION['questionario_anamnesi'] != '') {
+                    echo "<h3 class='attributo'> Scarica questionario anamnesi: <button type='submit' name='download' class='material-icons'>
+                          <a class='icons' style='font-size: 50px; position: relative; top: 15px; text-decoration: none;' href='questionari_compilati/" . $_SESSION['questionario_anamnesi'] . "' download='questionario_anamnesi.pdf'>
+                          file_download</a></button></h3>
+                          <br><br>";
+                }
+                  echo "<button type='submit' class='material-icons' onclick='torna_indietro()'><a class='icons' style='font-size: 50px;'>arrow_back</a></button>";
             break;
 
         case "ME":
@@ -144,11 +151,15 @@ h3.attributo {
                   <h3 class='attributo'>Azienda Sanitaria: </h3><h3 class='orange-text' >" . $azienda_sanitaria . "</h3><br>
                   <h3 class='attributo'>Partita Iva: </h3><h3 class='orange-text' >" . $partita_iva . "</h3><br>
                   <h3 class='attributo'>Email: </h3><h3 class='orange-text' >" . $email . "</h3><br>
-                  <h3 class='attributo'>Numero Prenotati: </h3><h3 class='orange-text' >" . $numero_prenotati . "</h3>
-                  <br>
-                  <br>
-                  <button type='submit' class='material-icons' onclick='torna_indietro()'><a class='icons' style='font-size: 50px;'>arrow_back</a></button>";
-            
+                  <h3 class='attributo'>Numero Prenotati: </h3><h3 class='orange-text' >" . $numero_prenotati . "</h3><br>";
+
+                  if($_SESSION['questionario_anamnesi'] != '') {
+                    echo "<h3 class='attributo'> Scarica questionario anamnesi: <button type='submit' name='download' class='material-icons'>
+                          <a class='icons' style='font-size: 50px; position: relative; top: 15px; text-decoration: none;' href='questionari_compilati/" . $_SESSION['questionario_anamnesi'] . "' download='questionario_anamnesi.pdf'>
+                          file_download</a></button></h3>
+                          <br><br>";
+                }
+                  echo "<button type='submit' class='material-icons' onclick='torna_indietro()'><a class='icons' style='font-size: 50px;'>arrow_back</a></button>";
             break;
 
         default:

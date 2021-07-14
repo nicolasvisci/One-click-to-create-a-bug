@@ -6,7 +6,7 @@ class Pages extends BaseController {
 
 	public function index() {
 		echo view('templates/header_loggedOut');
-        echo view('pages/home');
+        echo view('pages/homepage/home');
 	}
 
     public function view($page = '') {

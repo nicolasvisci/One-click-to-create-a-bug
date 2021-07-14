@@ -82,7 +82,7 @@ class Prenota extends BaseController {
     public function conferma_prenotazione() {
         session();
         $db = \Config\Database::connect();
-    
+
         $email = $_SESSION['email'];
         $email_lab = $_SESSION['email_lab'];
         $id = $_SESSION['id'];
@@ -90,15 +90,15 @@ class Prenota extends BaseController {
         $orario_inizio = $sql['orario_inizio'];
         $orario_fine = $sql['orario_fine'];
         $tipologia = $sql['tipologia'];
-    
+
         $data_prenotazione = $this->request->getVar('data_prenotazione');
         $hh = $this->request->getVar('hh');
         $mm = $this->request->getVar('mm');
         $orario = $hh . ":" . $mm;
-    
+
         if($_SESSION['prenotazione'] === 'prenotazione_multipla') {
             $numero_prenotati = $this->request->getVar('numero_prenotati');
-    
+
             if ($this->request->getMethod() === 'post' && $this->validate([
                 'data_prenotazione' => 'required',
                 'hh' => 'required|min_length[1]|max_length[2]',
@@ -106,22 +106,28 @@ class Prenota extends BaseController {
                 'numero_prenotati' => 'required|min_length[1]|max_length[2]'
             ]) && strtotime($data_prenotazione) > strtotime('now') && strtotime($orario) > strtotime($orario_inizio)
                && strtotime($orario) < strtotime($orario_fine) && $numero_prenotati > 1 && $numero_prenotati <= 20)
-    
+
             {
                 $sql = $db->query("INSERT INTO prenotazioni VALUES ('" . $email_lab . "', '" . $email . "', '" . 
-                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ", 0, '');");
-    
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ", NULL, '');");
+
+                $sql = $db->query("INSERT INTO notifiche VALUES (1, '" . $email_lab . "', '" . $email . "', '" . 
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ", 'UTENTE', CURRENT_TIMESTAMP());");
+                
+                $sql = $db->query("INSERT INTO notifiche VALUES (1, '" . $email_lab . "', '" . $email . "', '" . 
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', " . $numero_prenotati . ", 'LAB', CURRENT_TIMESTAMP());");
+
                 unset($_SESSION['email_lab']);
                 unset($_SESSION['id']);
                 unset($_SESSION['prenotazione']);
                 return redirect()->to('home');
-    
+
             } else {
                 return redirect()->to('conferma_prenotazione_multipla');
             }
-    
+
         } else {
-    
+
             if ($this->request->getMethod() === 'post' && $this->validate([
                 'data_prenotazione' => 'required',
                 'hh' => 'required|min_length[1]|max_length[2]',
@@ -133,7 +139,7 @@ class Prenota extends BaseController {
                 $questionario = '';
 
                 if(isset($_FILES['questionario']['size']) && $_FILES['questionario']['size'] > 0) {
-                    $uploadDir = 'C:/xampp/htdocs/sito-web/app/Views/pages/questionari/questionari';
+                    $uploadDir = 'C:/xampp/htdocs/sito-web/public/questionari_compilati/';
                     $questionario = basename($_FILES['questionario']['name']);
                     $uploadedFile = $uploadDir . $questionario;
                     
@@ -154,7 +160,13 @@ class Prenota extends BaseController {
                 }
                 
                 $sql = $db->query("INSERT INTO prenotazioni VALUES ('" . $email_lab . "', '" . $email . "', '" . 
-                $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1, 0, '" . $db->escapeString($questionario) . "');");
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1, NULL, '" . $db->escapeString($questionario) . "');");
+
+                $sql = $db->query("INSERT INTO notifiche VALUES (1, '" . $email_lab . "', '" . $email . "', '" . 
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1, 'UTENTE', CURRENT_TIMESTAMP());");
+
+                $sql = $db->query("INSERT INTO notifiche VALUES (1, '" . $email_lab . "', '" . $email . "', '" . 
+                                   $tipologia . "', '" . $data_prenotazione . "', '" . $hh . ":" . $mm . "', 1, 'LAB', CURRENT_TIMESTAMP());");
 
                 unset($_SESSION['email_lab']);
                 unset($_SESSION['id']);
@@ -166,5 +178,5 @@ class Prenota extends BaseController {
             }
         }
     }
-
 }
+

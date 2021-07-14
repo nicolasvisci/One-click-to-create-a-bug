@@ -127,11 +127,12 @@ button {
 }
 
 .material-icons {
-    color: white;
+    color: rgb(51, 121, 181);
 }    
 
 .material-icons:hover{
-    color:#ffa900;
+    color: rgb(40, 90, 140);
+    text-decoration: underline;
 }
 
 .icons {
@@ -184,7 +185,7 @@ button {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <form>
             <button type="submit" name="home" class="material-icons" id="home" formaction="home"><a class="icons">home</a></button>
-            <button type="submit" name="notifiche" class="material-icons" id="notifiche" formaction="notifiche"><a class="icons">notifications_none</a></button>
+            <button type="submit" name="notifiche" class="material-icons" id="notifiche" formaction="visualizza_notifiche"><a class="icons">notifications_none</a></button>
             <button type="submit" name="person" class="material-icons" id="profile" formaction="profile"><a class="icons">person</a></button>
             <button type="submit" name="logout" class="material-icons" id="logout" formaction="logout"><a class="icons">logout</a></button>
             <button type="submit" name="guida" class="material-icons" id="guida" formaction="guida_loggedIn"><a class="icons">info</a></button>

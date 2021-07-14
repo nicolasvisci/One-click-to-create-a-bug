@@ -69,8 +69,6 @@ h3.titolo {
 
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
 <?php 
     $db = \Config\Database::connect();
     $data = $_SESSION['date'];
@@ -116,7 +114,7 @@ h3.titolo {
                     </a> 
                     </button>";
                 }
-                else if (strtotime('now')> strtotime($data . " " . $sql[$i]['orario']) && $sql[$i]['numero_positivi'] == 0) {
+                else if (strtotime('now')> strtotime($data . " " . $sql[$i]['orario']) && $sql[$i]['numero_positivi'] === NULL) {
                     echo "<button type='submit' name='set_risultato' style='margin-left:30px' class='material-icons' id='" . $i . "' onclick='set_risultato(this.id)'> 
                     <a class='icons' style='font-size: 50px; color:rgb(100, 185, 20); line-height: 70px;'> 
                     rule
@@ -159,12 +157,12 @@ h3.titolo {
 
     function set_risultato(id){
         $.ajax({
-            url: "/annulla_prenotazione",
+            url: "/get_risultato_lab",
             type: "POST",
             data: {id},
             dataType: "json",
             success: function(){
-                window.location.href = "/history";
+                window.location.href = "/set_risultato_lab";
             }
         })
     }

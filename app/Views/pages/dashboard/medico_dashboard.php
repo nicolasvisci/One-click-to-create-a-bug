@@ -34,6 +34,10 @@ letter-spacing: -1px;
 line-height: 1;
 text-align: center; 
 }
+
+h3 {
+  color: orange;
+}
 </style>
 
 
@@ -45,5 +49,17 @@ text-align: center;
 <br>
 <h1> <span class="Title">Dott./Dott.ssa<output color="white"> <?php echo $_SESSION['cognome']?></output></span></h1>
 <h2> <span class="Title"> Medico di base</span></h2>
+<br>
+<?php 
+            session();
+            $db = \Config\Database::connect();
+
+            $sql = $db->query("SELECT COUNT(*) as numero FROM notifiche WHERE email_utente = '" . $_SESSION['email'] . "' AND tipo = 'UTENTE';")->getResultArray();
+            $numero = $sql[0]['numero'];
+
+            if ($numero) {
+                echo "<h3 style='text-align: center; font-weight: bold'><span> Hai " . $sql[0]['numero'] . " notifica/che</h3></span>";
+            }
+        ?>
 </a>
 </main>

@@ -39,7 +39,7 @@ border: 0px;
 
 .row div{
     float:left;
-    width: 170px;
+    width: 200px;
     height: 50px;
     border-radius: 5px;
     text-align: center;
@@ -68,23 +68,23 @@ h3.titolo {
     <?php 
         $db = \Config\Database::connect();
 
-        $sql = $db->query("SELECT nome_lab, tipologia_test, data, orario, costo*numero_prenotati AS costo_totale, numero_prenotati FROM laboratori, test, prenotazioni WHERE prenotazioni.email_lab = test.email AND test.email = laboratori.email AND prenotazioni.email_utente = '" . $_SESSION['email'] . "' AND tipologia_test = tipologia ORDER BY data DESC, orario DESC;")->getResultArray();
+        $sql = $db->query("SELECT nome_lab, tipologia_test, data, orario, costo*numero_prenotati AS costo_totale, numero_prenotati, numero_positivi FROM laboratori, test, prenotazioni WHERE prenotazioni.email_lab = test.email AND test.email = laboratori.email AND prenotazioni.email_utente = '" . $_SESSION['email'] . "' AND tipologia_test = tipologia ORDER BY data DESC, orario DESC;")->getResultArray();
         $tuples = count($sql);
 
         ?>
-        <h3 class="titolo" ><span> LABORATORIO</span></h3>
-        <h3 class="titolo" style="margin-left: 65px;"><span> TIPO DI TEST</span></h3>
+        <h3 class="titolo" style="margin-left: 15px;" ><span> LABORATORIO</span></h3>
+        <h3 class="titolo" style="margin-left: 60px;"><span> TIPO DI TEST</span></h3>
         <h3 class="titolo" style="margin-left: 60px;"><span> DATA</span></h3>
-        <h3 class="titolo" style="margin-left: 60px;"><span> ORARIO</span></h3>
+        <h3 class="titolo" style="margin-left: 50px;"><span> ORARIO</span></h3>
         <h3 class="titolo" style="margin-left: 60px;"><span> COSTO</span></h3>
-        <h3 class="titolo" style="margin-left: 80px;"><span> N° PRENOTATI</span></h3>
+        <h3 class="titolo" style="margin-left: 70px;"><span> N° PRENOTATI</span></h3>
         <?php 
 
         for ($i = 0; $i < $tuples; $i++) {
             ?>
-            <div class="row"><div style="margin-left: 0px;"> <?php echo $sql[$i]['nome_lab']?> </div> <div style="margin-left: 43px;"> <?php echo $sql[$i]['tipologia_test'] ?> </div>
-            <div style="margin-left: 27px; width: 100px;"> <?php echo $sql[$i]['data'] ?> </div> <div style="margin-left: 23px; width: 120px;"> <?php echo substr($sql[$i]['orario'], 0, 5) ?> </div> 
-            <div style="margin-left: 26px; width: 110px;"> <?php echo $sql[$i]['costo_totale'] . "€"?> </div> <?php  { echo "<div style='margin-left: 60px;'>"; echo $sql[$i]['numero_prenotati']; echo "</div>";}?> 
+            <div class="row"><div style="margin-left: 0px;"> <?php echo $sql[$i]['nome_lab']?> </div> <div style="margin-left: 10px;"> <?php echo $sql[$i]['tipologia_test'] ?> </div>
+            <div style="margin-left: 10px; width: 100px;"> <?php echo $sql[$i]['data'] ?> </div> <div style="margin-left: 15px; width: 120px;"> <?php echo substr($sql[$i]['orario'], 0, 5) ?> </div> 
+            <div style="margin-left: 26px; width: 110px;"> <?php echo $sql[$i]['costo_totale'] . "€"?> </div> <?php  { echo "<div style='margin-left: 28px;'>"; echo $sql[$i]['numero_prenotati']; echo "</div>";}?> 
             <?php if(strtotime('now') < strtotime($sql[$i]['data']) - 86400 || (strtotime('now') < strtotime($sql[$i]['data']) && strtotime('now') < strtotime($sql[$i]['orario']))) {
                       echo "<button type='submit' name='annulla_prenotazione'";
                       echo " class='material-icons' id='" . $i . "' onclick='annulla_prenotazione(this.id)'> 
@@ -92,7 +92,16 @@ h3.titolo {
                       cancel 
                       </a> 
                       </button>";
-                  } ?> </div>
+                  } else if($sql[$i]['numero_positivi'] !== NULL) {
+                    echo "<button type='submit' name='mostra_risultato'";
+                    session();
+
+                    echo " class='material-icons' id='" . $i . "' onclick='mostra_risultato(this.id)'> 
+                    <a class='icons' style='font-size: 29px; color:rgb(185, 185, 185); line-height: 70px;'> 
+                    info
+                    </a> 
+                    </button>";
+              } ?> </div>
             <div style="clear:both;"></div>
             
         <?php }  ?>
@@ -107,6 +116,18 @@ h3.titolo {
             dataType: "json",
             success: function(){
                 window.location.href = "/history";
+            }
+        })
+    }
+
+    function mostra_risultato(id) {
+        $.ajax({
+            url: "/get_risultato_utente",
+            type: "POST",
+            data: {id},
+            dataType: "json",
+            success: function(){
+                window.location.href = "/mostra_risultato";
             }
         })
     }

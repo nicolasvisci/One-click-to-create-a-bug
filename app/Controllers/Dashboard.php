@@ -35,9 +35,45 @@ class Dashboard extends BaseController {
 
             default:
                 echo view('templates/header_loggedOut');
-                echo view('pages/home');
+                echo view('pages/homepage/home');
                 break;
         } 
+    }
+
+    public function info() {
+        $session = session();
+
+        switch ($session->get('tipo_utente')) {
+
+            case "CI":
+                echo view('templates/header_loggedIn');
+                echo view('pages/homepage/info');
+                echo view('templates/footer_loggedIn_users');
+                break;
+
+            case "DA":
+                echo view('templates/header_loggedIn');
+                echo view('pages/homepage/info');
+                echo view('templates/footer_loggedIn_users');
+                break;
+
+            case "ME":
+                echo view('templates/header_loggedIn');
+                echo view('pages/homepage/info');
+                echo view('templates/footer_loggedIn_users');
+                break;
+
+            case "LA":
+                echo view('templates/header_loggedIn_LAB');
+                echo view('pages/homepage/info');
+                echo view('templates/footer_loggedIn_LAB');
+                break;
+                
+            default:
+                echo view('templates/header_loggedOut');
+                echo view('pages/homepage/info');
+                break;
+        }
     }
 
     public function scegliRegistrazione() {
@@ -61,6 +97,25 @@ class Dashboard extends BaseController {
     public function cambiaPassword() {
         echo view('templates/header_loggedOut');
         echo view('pages/login/cambia_password');
+    }
+
+    public function visualizza_notifiche() {
+        $session = session();
+
+        switch ($session->get('tipo_utente')) {
+
+            case "LA":
+                echo view('templates/header_loggedIn_LAB');
+                echo view('pages/notifiche/visualizza_notifiche_lab');
+                echo view('templates/footer_loggedIn_LAB');
+                break;
+
+            default:
+                echo view('templates/header_loggedIn');
+                echo view('pages/notifiche/visualizza_notifiche_utenti');
+                echo view('templates/footer_loggedIn_users');
+                break;
+        }
     }
 
     public function profile() {
