@@ -54,33 +54,33 @@ border: 0px;
 
             if ($sql[$i]['id'] == 1) {
 
-                echo "E' stata effettuata una prenotazione per " . $sql[$i]['tipologia_test'] . " ";
+                echo "E' stata effettuata una prenotazione per <a style='color:orange';>" . $sql[$i]['tipologia_test'] . "</a> ";
 
                 if($sql[$i]['numero_prenotati'] > 1) {
-                    echo "per " . $sql[$i]['numero_prenotati'] . " persone ";
+                    echo "per <a style='color:orange';>" . $sql[$i]['numero_prenotati'] . "</a> persone ";
                 }
 
-                echo " il giorno " . $sql[$i]['data'] . " alle ore " . substr($sql[$i]['orario'], 0, 5);
+                echo " il giorno <a style='color:orange';>" . $sql[$i]['data'] . "</a> alle ore <a style='color:orange';>" . substr($sql[$i]['orario'], 0, 5);
                 
             } else if ($sql[$i]['id'] == 2) {
 
-                echo "La prenotazione per " . $sql[$i]['tipologia_test'] . " ";
+                echo "La prenotazione per <a style='color:orange';>" . $sql[$i]['tipologia_test'] . "</a> ";
 
                 if($sql[$i]['numero_prenotati'] > 1) {
-                    echo "per " . $sql[$i]['numero_prenotati'] . " persone ";
+                    echo "per <a style='color:orange';>" . $sql[$i]['numero_prenotati'] . "</a> persone ";
                 }
 
-                echo " il giorno " . $sql[$i]['data'] . " alle ore " . substr($sql[$i]['orario'], 0, 5) . " è stata annullata";
+                echo " il giorno <a style='color:orange';>" . $sql[$i]['data'] . "</a> alle ore <a style='color:orange';>" . substr($sql[$i]['orario'], 0, 5) . "</a> è stata annullata";
 
             } else if ($sql[$i]['id'] == 3) {
 
-                echo "Hai annullato la prenotazione per " . $sql[$i]['tipologia_test'] . " ";
+                echo "Hai annullato la prenotazione per <a style='color:orange';>" . $sql[$i]['tipologia_test'] . "</a> ";
 
                 if($sql[$i]['numero_prenotati'] > 1) {
-                    echo "per " . $sql[$i]['numero_prenotati'] . " persone ";
+                    echo "per <a style='color:orange';>" . $sql[$i]['numero_prenotati'] . "</a> persone ";
                 }
 
-                echo " il giorno " . $sql[$i]['data'] . " alle ore " . substr($sql[$i]['orario'], 0, 5);
+                echo " il giorno <a style='color:orange';>" . $sql[$i]['data'] . "</a> alle ore <a style='color:orange';>" . substr($sql[$i]['orario'], 0, 5);
             } 
 
             echo "</p>";

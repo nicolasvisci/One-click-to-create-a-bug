@@ -90,7 +90,7 @@ h3.attributo {
             } 
 
       } else {
-          echo "<br><center><h2 style='color: white;'>" . $_SESSION['numero_positivi'] . "</h2><h2 style='color: red;'> Positivo/i " . "<br><h2 style='color: white;'>" . $_SESSION['numero_prenotati'] - $_SESSION['numero_positivi'] . " </h2><h2 style='color: green;'>Negativo/i</h2></center>";
+          echo "<br><center><h2 style='color: white;'>" . $_SESSION['numero_positivi'] . "</h2><h2 style='color: red;'> Positivo/i " . "<br><h2 style='color: white; margin-left: 10px;'>" . $_SESSION['numero_prenotati'] - $_SESSION['numero_positivi'] . " </h2><h2 style='color: green;'>Negativo/i</h2></center>";
       }
            ?></h3>
     <br>

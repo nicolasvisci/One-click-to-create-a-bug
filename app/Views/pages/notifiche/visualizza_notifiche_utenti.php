@@ -55,45 +55,45 @@ border: 0px;
 
             if ($sql[$i]['id'] == 1) {
 
-                echo "Hai effettuato una prenotazione per " . $sql[$i]['tipologia_test'] . " ";
+                echo "Hai effettuato una prenotazione per <a style='color:orange';>" . $sql[$i]['tipologia_test'] . "</a> ";
 
                 if($sql[$i]['numero_prenotati'] > 1) {
-                    echo "per " . $sql[$i]['numero_prenotati'] . " persone ";
+                    echo "per <a style='color:orange';>" . $sql[$i]['numero_prenotati'] . "</a> persone ";
                 }
 
-                echo "presso il laboratorio " . $sql[$i]['nome_lab'] . " il giorno " . $sql[$i]['data'] . " alle ore " . substr($sql[$i]['orario'], 0, 5);
+                echo "presso il laboratorio <a style='color:orange';>" . $sql[$i]['nome_lab'] . "</a> il giorno <a style='color:orange';>" . $sql[$i]['data'] . "</a> alle ore <a style='color:orange';>" . substr($sql[$i]['orario'], 0, 5);
                 
             } else if ($sql[$i]['id'] == 2) {
 
-                echo "Hai annullato la prenotazione per " . $sql[$i]['tipologia_test'] . " ";
+                echo "Hai annullato la prenotazione per <a style='color:orange';>" . $sql[$i]['tipologia_test'] . "</a> ";
 
                 if($sql[$i]['numero_prenotati'] > 1) {
-                    echo "per " . $sql[$i]['numero_prenotati'] . " persone ";
+                    echo "per <a style='color:orange';>" . $sql[$i]['numero_prenotati'] . "</a> persone ";
                 }
 
-                echo "presso il laboratorio " . $sql[$i]['nome_lab'] . " il giorno " . $sql[$i]['data'] . " alle ore " . substr($sql[$i]['orario'], 0, 5);
+                echo "presso il laboratorio <a style='color:orange';>" . $sql[$i]['nome_lab'] . "</a> il giorno <a style='color:orange';>" . $sql[$i]['data'] . "</a> alle ore <a style='color:orange';>" . substr($sql[$i]['orario'], 0, 5);
 
             } else if ($sql[$i]['id'] == 3) {
 
-                echo "La prenotazione per " . $sql[$i]['tipologia_test'] . " ";
+                echo "La prenotazione per <a style='color:orange';>" . $sql[$i]['tipologia_test'] . "</a> ";
 
                 if($sql[$i]['numero_prenotati'] > 1) {
-                    echo "per " . $sql[$i]['numero_prenotati'] . " persone ";
+                    echo "per <a style='color:orange';>" . $sql[$i]['numero_prenotati'] . "</a> persone ";
                 }
 
-                echo "presso il laboratorio " . $sql[$i]['nome_lab'] . " il giorno " . $sql[$i]['data'] . " alle ore " . substr($sql[$i]['orario'], 0, 5) . " è stata annullata";
+                echo "presso il laboratorio <a style='color:orange';>" . $sql[$i]['nome_lab'] . "</a> il giorno <a style='color:orange';>" . $sql[$i]['data'] . "</a> alle ore <a style='color:orange';>" . substr($sql[$i]['orario'], 0, 5) . "</a> è stata annullata";
 
             } else if ($sql[$i]['id'] == 4) {
 
-                echo "Il " . $sql[$i]['tipologia_test'] . " effettuato il giorno " . $sql[$i]['data'] . " alle ore " . substr($sql[$i]['orario'], 0, 5) . " presso il laboratorio " . $sql[$i]['nome_lab'] . " ha dato come esito: POSITIVO " ;
+                echo "Il <a style='color:orange';>" . $sql[$i]['tipologia_test'] . "</a> effettuato il giorno <a style='color:orange';>" . $sql[$i]['data'] . "</a> alle ore <a style='color:orange';>" . substr($sql[$i]['orario'], 0, 5) . "</a> presso il laboratorio <a style='color:orange';>" . $sql[$i]['nome_lab'] . "</a> ha dato come esito: <a style='color:red';>POSITIVO " ;
 
             } else if ($sql[$i]['id'] == 5) {
 
-                echo "Il " . $sql[$i]['tipologia_test'] . " effettuato il giorno " . $sql[$i]['data'] . " alle ore " . substr($sql[$i]['orario'], 0, 5) . " presso il laboratorio " . $sql[$i]['nome_lab'] . " ha dato come esito: NEGATIVO " ;
+                echo "Il <a style='color:orange';>" . $sql[$i]['tipologia_test'] . "</a> effettuato il giorno <a style='color:orange';>" . $sql[$i]['data'] . "</a> alle ore <a style='color:orange';>" . substr($sql[$i]['orario'], 0, 5) . "</a> presso il laboratorio <a style='color:orange';>" . $sql[$i]['nome_lab'] . "</a> ha dato come esito: <a style='color:green';>NEGATIVO " ;
             
             } else if ($sql[$i]['id'] == 6) {
 
-                echo "Il " . $sql[$i]['tipologia_test'] . " effettuato il giorno " . $sql[$i]['data'] . " alle ore " . substr($sql[$i]['orario'], 0, 5) . " presso il laboratorio " . $sql[$i]['nome_lab'] . " ha dato come esito: POSITIVO per " . $sql[$i]['numero_prenotati'] . " persone "; ;
+                echo "Il <a style='color:orange';>" . $sql[$i]['tipologia_test'] . "</a> effettuato il giorno <a style='color:orange';>" . $sql[$i]['data'] . "</a> alle ore <a style='color:orange';>" . substr($sql[$i]['orario'], 0, 5) . "</a> presso il laboratorio <a style='color:orange';>" . $sql[$i]['nome_lab'] . "</a> ha dato come esito: <a style='color:red';>POSITIVO </a>per<a style='color:orange';> " . $sql[$i]['numero_prenotati'] . "</a> persone "; ;
             
             }
 
