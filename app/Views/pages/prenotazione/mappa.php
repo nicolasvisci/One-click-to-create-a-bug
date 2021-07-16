@@ -12,7 +12,7 @@
 
 h1 {
     text-align:center;
-    margin-right: 0px;
+    margin-right: 30px;
     border: 0px;
     padding-bottom: 0px;
     font-weight: bold;
